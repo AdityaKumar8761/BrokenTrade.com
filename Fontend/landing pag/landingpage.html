@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+<script type="text/babel">
+
+const { useState } = React;
+
+const App = () => {
+
+  const stocksData = [
+  { symbol: "NIFTY 50", price: 22150.45, change: 0.85 },
+  { symbol: "BANKNIFTY", price: 48120.30, change: -0.42 },
+  { symbol: "RELIANCE", price: 2450.60, change: 1.12 },
+  { symbol: "TCS", price: 3921.80, change: -0.75 },
+  { symbol: "HDFCBANK", price: 1582.40, change: 0.63 },
+  { symbol: "INFY", price: 1440.20, change: -1.05 }
+  ];
+
+
+  const quotes = [
+    "The stock market is a device for transferring money from the impatient to the patient.  ",
+    "Risk comes from not knowing what you're doing. ",
+    "An investment in knowledge pays the best interest.",
+    "The four most dangerous words in investing are: 'This time it's different.' ",
+    "Know what you own, and know why you own it.",
+    "In investing, what is comfortable is rarely profitable.",
+    "The individual investor should act consistently as an investor and not as a speculator."
+  ];
+
+  const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+
+  return (
+    <div style={styles.page}>
+
+      {/* NAVBAR */}
+      <div style={styles.navbar}>
+        <h2 style={styles.logo}>Brokentrad</h2>
+
+        <div style={styles.navLinks}>
+          <span>Stocks</span>
+          <span>F&O</span>
+          <span>Mutual Funds</span>
+          <span>Learn</span>
+        </div>
+
+        <button style={styles.loginBtn} onClick={() => window.location.href = "../loginPage/loginPage.html"}>Login / Sign up</button>
+      </div>
+
+      <div style={styles.tickerWrapper}>
+  <div style={styles.tickerTrack}>
+    {[...stocksData, ...stocksData].map((stock, index) => (
+      <div key={index} style={styles.stockItem}>
+        <span style={styles.stockName}>{stock.symbol}</span>
+        <span>{stock.price}</span>
+        <span
+          style={{
+            color: stock.change >= 0 ? "#16a34a" : "#dc2626",
+            fontWeight: "600"
+          }}
+        >
+          {stock.change >= 0 ? "▲" : "▼"} {Math.abs(stock.change)}%
+        </span>
+      </div>
+    ))}
+  </div>
+</div>
+
+
+
+      {/* HERO SECTION */}
+      <div style={styles.hero}>
+
+        <h1 style={styles.quote}>
+          {randomQuote}
+        </h1>
+
+        
+        {/* IMAGE SECTION */}
+        <img
+        src="image.png"
+        alt="Landing Illustration"
+        style={styles.heroImage}
+        />
+        
+        <button style={styles.ctaBtn} onClick={() => window.location.href = "../loginPage/loginPage.html"}>Get Started</button>
+      </div>
+
+    </div>
+  );
+};
+
+
+const styles = {
+
+  tickerWrapper: {
+  overflow: "hidden",
+  whiteSpace: "nowrap",
+  marginTop: "20px",
+  marginBottom: "40px",
+  borderBottom: "1px solid #e5e7eb",
+  paddingBottom: "10px"
+},
+
+tickerTrack: {
+  display: "inline-flex",
+  gap: "50px",
+  animation: "scrollTicker 25s linear infinite"
+},
+
+stockItem: {
+  display: "flex",
+  gap: "8px",
+  alignItems: "center",
+  fontSize: "14px",
+  color: "#6b7280"
+},
+
+stockName: {
+  fontWeight: "600",
+  color: "#1f2937"
+},
+
+
+  page: {
+    minHeight: "200vh",
+    background: "white",
+    fontFamily: "Arial, sans-serif",
+    padding: "0 0px",
+    position: "relative"
+  },
+
+  navbar: {
+    height: "80px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    position: "sticky",
+    top: 0,
+    zIndex: 100,
+    backdropFilter: "blur(15px)",
+    background: "rgba(255,255,255,0.6)",
+    borderBottom: "1px solid rgba(0,0,0,0.05)",
+    boxShadow: "0 8px 20px rgba(0,0,0,0.05)"
+  },
+
+  logo: {
+    color: "#2563eb",
+    fontWeight: "bold",
+    fontSize: "22px"
+  },
+
+  navLinks: {
+    display: "flex",
+    gap: "30px",
+    color: "#1e3a8a",
+    fontSize: "15px",
+    fontWeight: "500"
+  },
+
+  loginBtn: {
+    background: "linear-gradient(135deg, #2563eb, #1d4ed8)",
+    border: "none",
+    padding: "10px 22px",
+    borderRadius: "8px",
+    color: "white",
+    cursor: "pointer",
+    fontWeight: "bold",
+    boxShadow: "0 5px 15px rgba(37,99,235,0.4)"
+  },
+
+  hero: {
+    textAlign: "center",
+    marginTop: "80px"
+  },
+
+  quote: {
+    fontSize: "52px",
+    fontWeight: "bold",
+    color: "#1e3a8a",
+    maxWidth: "1000px",
+    margin: "0 auto",
+    lineHeight: "1.2"
+  },
+
+  ctaBtn: {
+    marginTop: "40px",
+    background: "linear-gradient(135deg, #2563eb, #1d4ed8)",
+    border: "none",
+    padding: "16px 45px",
+    borderRadius: "40px",
+    color: "white",
+    fontSize: "18px",
+    cursor: "pointer",
+    boxShadow: "0 10px 25px rgba(37,99,235,0.4)"
+  },
+
+  heroImage: {
+    marginTop: "70px",
+    width: "100%",
+    maxWidth: "1100px"
+  }
+
+};
+
+
+const container = document.querySelector('.js-container');
+
+const styleSheet = document.createElement("style");
+styleSheet.innerHTML = `
+@keyframes scrollTicker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+`;
+document.head.appendChild(styleSheet);
+
+
+ReactDOM.createRoot(container).render(<App />);
+
+</script>
+
+</body>
+</html>

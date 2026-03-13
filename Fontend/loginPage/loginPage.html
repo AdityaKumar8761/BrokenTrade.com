@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>signUp</title>
+</head>
+<body>
+    <div class="js-container"></div>
+    <script src ="login.css"></script>
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+<script type="text/babel">
+
+const { useState } = React;
+
+const App = () => {
+  const [isSignup, setIsSignup] = useState(false);
+
+  return (
+    <div style={styles.page}>
+        <div style={styles.bgGlow1}></div>
+<div style={styles.bgGlow2}></div>
+
+      <div style={styles.cardWrapper}>
+
+        {/* SIGN IN FORM (LEFT) */}
+        <div style={styles.left}>
+          <h2 style={styles.title}>Sign In</h2>
+          <p style={styles.subtitle}>
+            Don't have an account?{" "}
+            <span style={styles.link} onClick={() => setIsSignup(true)}>
+              Sign Up
+            </span>
+          </p>
+
+          <input style={styles.input} placeholder="Email" />
+          <input style={styles.input} type="password" placeholder="Password" />
+          <button style={styles.button}>Login</button>
+
+          <div style={styles.divider}>or</div>
+
+          <div style={styles.socialRow}>
+            <button style={styles.socialBtn}>Google</button>
+            <button style={styles.socialBtn}>facebook</button>
+          </div>
+        </div>
+
+
+        <div style={styles.rightLight}>
+          <h2 style={styles.title}>Create Trading Account</h2>
+          <p style={styles.subtitle}>
+            Already registered?{" "}
+            <span style={styles.linkDark} onClick={() => setIsSignup(false)}>
+              Sign In
+            </span>
+          </p>
+
+          <input style={styles.input} placeholder="Full Name" />
+          <input style={styles.input} placeholder="Email" />
+          <input style={styles.input} placeholder="Mobile Number" />
+          <input style={styles.input} placeholder="PAN Number" />
+          <input style={styles.input} type="date" />
+          <input style={styles.input} type="password" placeholder="Create Password" />
+          <select style={styles.input}>
+            <option value="">Select Account Type</option>
+            <option value="broker">Broker</option>
+            <option value="new learner">New Learner</option>
+            <option value="trainer">Trainer</option>
+            <option value="admin">Admin</option>
+        </select>
+
+
+          <button style={styles.button}>Create Account</button>
+        </div>
+
+        {/* BLUE SLIDING PANEL */}
+        <div
+          style={{
+            ...styles.overlay,
+transform: isSignup
+  ? "translateX(-100%) scale(1.0)"
+  : "translateX(0) scale(1)"
+          }}
+        >
+          {isSignup ? (
+            <>
+              <h1>BrokenTrade</h1>
+              <p>lets get you started</p>
+            </>
+          ) : (
+            <>
+              <h1>BrokenTrade</h1>
+              <p>Learn and Earn</p>
+            </>
+          )}
+        </div>
+
+      </div>
+    </div>
+  );
+};
+
+
+const styles = {
+page: {
+  height: "100vh",
+  background: "white",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  fontFamily: "Arial",
+  position: "relative",
+  overflow: "hidden"
+},
+
+
+cardWrapper: {
+  width: "950px",
+  height: "580px",
+  position: "relative",
+  borderRadius: "25px",
+  overflow: "hidden",
+  backdropFilter: "blur(20px)",
+  background: "rgba(255, 255, 255, 0.1)",
+  border: "1px solid rgba(255,255,255,0.3)",
+  boxShadow: "0 25px 60px rgba(0,0,0,0.3)",
+},
+
+
+  left: {
+    position: "absolute",
+    width: "50%",
+    height: "100%",
+    left: 0,
+    top: 0,
+    padding: "50px",
+    boxSizing: "border-box"
+  },
+
+  rightLight: {
+    position: "absolute",
+    width: "50%",
+    height: "100%",
+    right: 0,
+    top: 0,
+    padding: "50px",
+    boxSizing: "border-box"
+  },
+
+overlay: {
+  position: "absolute",
+  width: "50%",
+  height: "100%",
+  top: 0,
+  right: 0,
+  background: "linear-gradient(135deg, #4f46e5, #3b82f6)",
+  color: "white",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+  textAlign: "center",
+  transition: "transform 0.9s cubic-bezier(0.77, 0, 0.175, 1), box-shadow 0.9s ease",
+  zIndex: 10,
+  boxSizing: "border-box",
+  boxShadow: "0 20px 40px rgba(0,0,0,0.25)"
+},
+
+
+  title: {
+    marginBottom: "10px"
+  },
+
+  subtitle: {
+    fontSize: "14px",
+    marginBottom: "20px"
+  },
+
+  link: {
+    color: "#4f46e5",
+    cursor: "pointer",
+    fontWeight: "bold"
+  },
+
+  linkDark: {
+    color: "#3b82f6",
+    cursor: "pointer",
+    fontWeight: "bold"
+  },
+
+  input: {
+    width: "100%",
+    padding: "10px",
+    marginBottom: "12px",
+    borderRadius: "8px",
+    border: "1px solid #ddd",
+    fontSize: "14px",
+    boxSizing: "border-box"
+  },
+
+button: {
+  width: "100%",
+  padding: "14px",
+  borderRadius: "14px",
+  border: "none",
+  background: "linear-gradient(135deg, #4f46e5, #3b82f6)",
+  color: "white",
+  fontSize: "16px",
+  cursor: "pointer",
+  marginTop: "12px",
+  boxShadow: "0 10px 25px rgba(79,70,229,0.4)",
+  transition: "all 0.3s ease"
+},
+
+
+  bgGlow1: {
+  position: "absolute",
+  width: "500px",
+  height: "500px",
+  background: "rgba(255,255,255,0.15)",
+  borderRadius: "50%",
+  filter: "blur(120px)",
+  top: "-150px",
+  left: "-150px"
+},
+
+bgGlow2: {
+  position: "absolute",
+  width: "500px",
+  height: "500px",
+  background: "rgba(255,255,255,0.1)",
+  borderRadius: "50%",
+  filter: "blur(150px)",
+  bottom: "-200px",
+  right: "-150px"
+},
+
+  divider: {
+    fontSize: "20px",
+    textAlign: "center",
+    marginTop: "45px",
+    marginBottom: "45px",
+    color: "#777"
+  },
+
+  socialBtn: {
+      fontSize: "15px" ,
+      width: "120px",
+      height: "40px",
+      borderRadius: "50px",
+      border: "1px solid #ddd",
+      cursor: "pointer"
+    },
+  
+  socialRow: {
+    display: "flex",
+    justifyContent: "center",
+    gap: "15px"
+  },
+
+};
+
+const container = document.querySelector('.js-container');
+ReactDOM.createRoot(container).render(<App />);
+
+</script>
+
+
+
+</body>
+</html>

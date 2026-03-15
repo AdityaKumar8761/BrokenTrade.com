@@ -1,0 +1,926 @@
+openapi: 3.0.3
+info:
+  title: Backend API
+  version: 1.0.0
+  description: |
+    OpenAPI specification generated from the current Express backend routes/controllers.
+    Base URL includes `/api`.
+servers:
+  - url: http://localhost:4000/api
+    description: Local development
+
+tags:
+  - name: Health
+  - name: Auth
+  - name: Content
+  - name: Progress
+  - name: Quiz
+  - name: Paper
+  - name: Journal
+
+paths:
+  /health:
+    get:
+      tags: [Health]
+      summary: Health check
+      description: This endpoint is mounted outside `/api` in the app (`GET /health`).
+      servers:
+        - url: http://localhost:4000
+      responses:
+        '200':
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ok:
+                    type: boolean
+                    example: true
+                required: [ok]
+
+  /auth/register:
+    post:
+      tags: [Auth]
+      summary: Register a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterRequest'
+      responses:
+        '201':
+          description: User created and token issued
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '409':
+          description: Email already in use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: Email already in use
+
+  /auth/login:
+    post:
+      tags: [Auth]
+      summary: Login and receive JWT token
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+      responses:
+        '200':
+          description: Authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+        '401':
+          description: Invalid credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: Invalid credentials
+        '400':
+          $ref: '#/components/responses/BadRequest'
+
+  /auth/me:
+    get:
+      tags: [Auth]
+      summary: Get current authenticated user
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Current user payload from auth middleware
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    $ref: '#/components/schemas/CurrentUser'
+                required: [user]
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /content/paths:
+    get:
+      tags: [Content]
+      summary: List learning paths
+      responses:
+        '200':
+          description: Paths list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  paths:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Path'
+                required: [paths]
+
+  /content/paths/{slug}:
+    get:
+      tags: [Content]
+      summary: Get a path by slug with modules and lessons
+      parameters:
+        - in: path
+          name: slug
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Path with modules and nested lesson previews
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  path:
+                    $ref: '#/components/schemas/Path'
+                  modules:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ModuleWithLessons'
+                required: [path, modules]
+        '404':
+          description: Path not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /content/lessons/{slug}:
+    get:
+      tags: [Content]
+      summary: Get lesson by slug and public quiz data (without correct answers)
+      parameters:
+        - in: path
+          name: slug
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Lesson and optional quiz
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  lesson:
+                    $ref: '#/components/schemas/Lesson'
+                  quiz:
+                    oneOf:
+                      - $ref: '#/components/schemas/PublicQuiz'
+                      - type: 'null'
+                required: [lesson, quiz]
+        '404':
+          description: Lesson not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /progress/lessons/{lessonId}/complete:
+    post:
+      tags: [Progress]
+      summary: Mark lesson as completed for current user
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: lessonId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Progress upserted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  progress:
+                    $ref: '#/components/schemas/LessonProgress'
+                required: [progress]
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          description: Lesson not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /progress/me:
+    get:
+      tags: [Progress]
+      summary: Get current user's lesson progress
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Progress list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  progress:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/LessonProgressSummary'
+                required: [progress]
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /quizzes/{quizId}:
+    get:
+      tags: [Quiz]
+      summary: Get quiz by id (public version, no correct answers)
+      parameters:
+        - in: path
+          name: quizId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Quiz payload
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  quiz:
+                    $ref: '#/components/schemas/PublicQuiz'
+                required: [quiz]
+        '404':
+          description: Quiz not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /quizzes/{quizId}/attempt:
+    post:
+      tags: [Quiz]
+      summary: Submit quiz attempt
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: quizId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QuizAttemptRequest'
+      responses:
+        '200':
+          description: Attempt scored and stored
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  attempt:
+                    $ref: '#/components/schemas/QuizAttemptResult'
+                required: [attempt]
+        '400':
+          description: Validation or answer length mismatch
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          description: Quiz not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /paper/account:
+    get:
+      tags: [Paper]
+      summary: Get current user's paper account
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Account or null if not created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  account:
+                    oneOf:
+                      - $ref: '#/components/schemas/PaperAccount'
+                      - type: 'null'
+                required: [account]
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      tags: [Paper]
+      summary: Create paper account for current user (idempotent)
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Existing account returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  account:
+                    $ref: '#/components/schemas/PaperAccount'
+                required: [account]
+        '201':
+          description: New account created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  account:
+                    $ref: '#/components/schemas/PaperAccount'
+                required: [account]
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /paper/trades:
+    get:
+      tags: [Paper]
+      summary: List paper trades for current user's account
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Trades list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  trades:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PaperTrade'
+                required: [trades]
+        '400':
+          description: Account not created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: Create paper account first
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /paper/trades/open:
+    post:
+      tags: [Paper]
+      summary: Open a paper trade
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OpenTradeRequest'
+      responses:
+        '201':
+          description: Trade created and account updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  trade:
+                    $ref: '#/components/schemas/PaperTrade'
+                  account:
+                    $ref: '#/components/schemas/PaperAccount'
+                required: [trade, account]
+        '400':
+          description: Validation, missing account, or insufficient balance
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /paper/trades/{tradeId}/close:
+    post:
+      tags: [Paper]
+      summary: Close an open paper trade
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: tradeId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CloseTradeRequest'
+      responses:
+        '200':
+          description: Trade closed and account updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  trade:
+                    $ref: '#/components/schemas/PaperTrade'
+                  account:
+                    $ref: '#/components/schemas/PaperAccount'
+                required: [trade, account]
+        '400':
+          description: Validation, missing account, or trade already closed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          description: Trade not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /journal:
+    get:
+      tags: [Journal]
+      summary: List journal entries for current user
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Entries list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  entries:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/JournalEntry'
+                required: [entries]
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      tags: [Journal]
+      summary: Create a journal entry
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateJournalRequest'
+      responses:
+        '201':
+          description: Entry created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  entry:
+                    $ref: '#/components/schemas/JournalEntry'
+                required: [entry]
+        '400':
+          description: Validation error or missing paper account (when tradeId provided)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          description: Trade does not belong to current user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  responses:
+    BadRequest:
+      description: Request validation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Missing, invalid, or expired JWT
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: Invalid or expired token
+      required: [error]
+
+    MongoId:
+      type: string
+      pattern: '^[a-fA-F0-9]{24}$'
+      example: 65f1b6c2a9f2f1d01b6d9a11
+
+    Timestamped:
+      type: object
+      properties:
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+
+    UserSummary:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/MongoId'
+        email:
+          type: string
+          format: email
+        name:
+          type: string
+          nullable: true
+      required: [id, email]
+
+    CurrentUser:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/MongoId'
+        email:
+          type: string
+          format: email
+      required: [id, email]
+
+    AuthResponse:
+      type: object
+      properties:
+        token:
+          type: string
+        user:
+          $ref: '#/components/schemas/UserSummary'
+      required: [token, user]
+
+    RegisterRequest:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+          minLength: 8
+        name:
+          type: string
+          minLength: 1
+      required: [email, password]
+
+    LoginRequest:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+          minLength: 1
+      required: [email, password]
+
+    Path:
+      allOf:
+        - $ref: '#/components/schemas/Timestamped'
+        - type: object
+          properties:
+            _id:
+              $ref: '#/components/schemas/MongoId'
+            slug:
+              type: string
+            title:
+              type: string
+            description:
+              type: string
+              nullable: true
+          required: [_id, slug, title]
+
+    LessonPreview:
+      type: object
+      properties:
+        _id:
+          $ref: '#/components/schemas/MongoId'
+        moduleId:
+          $ref: '#/components/schemas/MongoId'
+        slug:
+          type: string
+        title:
+          type: string
+        order:
+          type: number
+      required: [_id, moduleId, slug, title, order]
+
+    ModuleWithLessons:
+      allOf:
+        - $ref: '#/components/schemas/Timestamped'
+        - type: object
+          properties:
+            _id:
+              $ref: '#/components/schemas/MongoId'
+            pathId:
+              $ref: '#/components/schemas/MongoId'
+            title:
+              type: string
+            order:
+              type: number
+            lessons:
+              type: array
+              items:
+                $ref: '#/components/schemas/LessonPreview'
+          required: [_id, pathId, title, order, lessons]
+
+    Lesson:
+      allOf:
+        - $ref: '#/components/schemas/Timestamped'
+        - type: object
+          properties:
+            _id:
+              $ref: '#/components/schemas/MongoId'
+            moduleId:
+              $ref: '#/components/schemas/MongoId'
+            slug:
+              type: string
+            title:
+              type: string
+            contentMd:
+              type: string
+            order:
+              type: number
+          required: [_id, moduleId, slug, title, contentMd, order]
+
+    PublicQuizQuestion:
+      type: object
+      properties:
+        _id:
+          $ref: '#/components/schemas/MongoId'
+        prompt:
+          type: string
+        options:
+          type: array
+          items:
+            type: string
+      required: [_id, prompt, options]
+
+    PublicQuiz:
+      type: object
+      properties:
+        _id:
+          $ref: '#/components/schemas/MongoId'
+        lessonId:
+          $ref: '#/components/schemas/MongoId'
+        title:
+          type: string
+        questions:
+          type: array
+          items:
+            $ref: '#/components/schemas/PublicQuizQuestion'
+      required: [_id, lessonId, title, questions]
+
+    QuizAttemptRequest:
+      type: object
+      properties:
+        answers:
+          type: array
+          items:
+            type: integer
+            minimum: 0
+      required: [answers]
+
+    QuizAttemptResult:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/MongoId'
+        score:
+          type: integer
+        total:
+          type: integer
+        createdAt:
+          type: string
+          format: date-time
+      required: [id, score, total, createdAt]
+
+    LessonProgress:
+      allOf:
+        - $ref: '#/components/schemas/Timestamped'
+        - type: object
+          properties:
+            _id:
+              $ref: '#/components/schemas/MongoId'
+            userId:
+              $ref: '#/components/schemas/MongoId'
+            lessonId:
+              $ref: '#/components/schemas/MongoId'
+            status:
+              type: string
+              enum: [IN_PROGRESS, COMPLETED]
+            completedAt:
+              type: string
+              format: date-time
+              nullable: true
+          required: [_id, userId, lessonId, status]
+
+    LessonProgressSummary:
+      type: object
+      properties:
+        lessonId:
+          $ref: '#/components/schemas/MongoId'
+        status:
+          type: string
+          enum: [IN_PROGRESS, COMPLETED]
+        completedAt:
+          type: string
+          format: date-time
+          nullable: true
+        createdAt:
+          type: string
+          format: date-time
+      required: [lessonId, status, createdAt]
+
+    PaperAccount:
+      allOf:
+        - $ref: '#/components/schemas/Timestamped'
+        - type: object
+          properties:
+            _id:
+              $ref: '#/components/schemas/MongoId'
+            userId:
+              $ref: '#/components/schemas/MongoId'
+            currency:
+              type: string
+              example: USD
+            balance:
+              type: number
+          required: [_id, userId, currency, balance]
+
+    PaperTrade:
+      allOf:
+        - $ref: '#/components/schemas/Timestamped'
+        - type: object
+          properties:
+            _id:
+              $ref: '#/components/schemas/MongoId'
+            accountId:
+              $ref: '#/components/schemas/MongoId'
+            symbol:
+              type: string
+            side:
+              type: string
+              enum: [BUY, SELL]
+            quantity:
+              type: number
+            entryPrice:
+              type: number
+            exitPrice:
+              type: number
+              nullable: true
+            fees:
+              type: number
+            openedAt:
+              type: string
+              format: date-time
+            closedAt:
+              type: string
+              format: date-time
+              nullable: true
+          required: [_id, accountId, symbol, side, quantity, entryPrice, fees, openedAt]
+
+    OpenTradeRequest:
+      type: object
+      properties:
+        symbol:
+          type: string
+          minLength: 1
+        side:
+          type: string
+          enum: [BUY, SELL]
+        quantity:
+          type: number
+          exclusiveMinimum: 0
+        entryPrice:
+          type: number
+          exclusiveMinimum: 0
+        fees:
+          type: number
+          minimum: 0
+      required: [symbol, side, quantity, entryPrice]
+
+    CloseTradeRequest:
+      type: object
+      properties:
+        exitPrice:
+          type: number
+          exclusiveMinimum: 0
+        fees:
+          type: number
+          minimum: 0
+      required: [exitPrice]
+
+    JournalEntry:
+      allOf:
+        - $ref: '#/components/schemas/Timestamped'
+        - type: object
+          properties:
+            _id:
+              $ref: '#/components/schemas/MongoId'
+            userId:
+              $ref: '#/components/schemas/MongoId'
+            tradeId:
+              oneOf:
+                - $ref: '#/components/schemas/MongoId'
+                - type: object
+                  additionalProperties: true
+                - type: 'null'
+            title:
+              type: string
+            body:
+              type: string
+            emotions:
+              type: string
+              nullable: true
+            tags:
+              type: string
+              nullable: true
+          required: [_id, userId, title, body]
+
+    CreateJournalRequest:
+      type: object
+      properties:
+        title:
+          type: string
+          minLength: 1
+        body:
+          type: string
+          minLength: 1
+        emotions:
+          type: string
+        tags:
+          type: string
+        tradeId:
+          type: string
+      required: [title, body]
+

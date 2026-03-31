@@ -1,0 +1,56 @@
+.header {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  backdrop-filter: blur(15px);
+  background: rgba(255, 255, 255, 0.7);
+
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+  color: #2563eb;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.navLinks {
+  display: flex;
+  gap: 30px;
+}
+
+.navLinks a {
+  text-decoration: none;
+  color: #1e3a8a;
+  font-size: 15px;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.navLinks a:hover {
+  color: #2563eb;
+}
+
+.loginBtn {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  border: none;
+  padding: 10px 22px;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4);
+  transition: 0.2s;
+}
+
+.loginBtn:hover {
+  transform: translateY(-1px);
+}

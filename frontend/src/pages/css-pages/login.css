@@ -1,0 +1,127 @@
+.page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial;
+  position: relative;
+  overflow: hidden;
+  background: white;
+}
+
+.cardWrapper {
+  width: 950px;
+  height: 580px;
+  position: relative;
+  border-radius: 25px;
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+}
+
+.left, .right {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  padding: 50px;
+  box-sizing: border-box; /* 🔥 CRITICAL */
+}
+
+.left {
+  left: 0;
+}
+
+.right {
+  left: 50%; /* 🔥 IMPORTANT (not right: 0) */
+}
+
+
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 50%;  /* starts exactly on right half */
+  width: 50%;
+  height: 100%;
+
+  background: linear-gradient(135deg, #4f46e5, #3b82f6);
+  color: white;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  transition: transform 0.8s ease;
+  z-index: 10;
+}
+
+.overlay.move {
+  transform: translateX(-100%);
+}
+
+/* INPUT */
+.input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+/* BUTTON */
+.button {
+  width: 100%;
+  padding: 14px;
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(135deg, #4f46e5, #3b82f6);
+  color: white;
+  cursor: pointer;
+}
+
+/* LINKS */
+.link {
+  color: #4f46e5;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* DIVIDER */
+.divider {
+  text-align: center;
+  margin: 30px 0;
+}
+
+/* SOCIAL */
+.socialRow {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.socialBtn {
+  padding: 8px 20px;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+}
+
+/* BACKGROUND GLOW */
+.bgGlow1, .bgGlow2 {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  filter: blur(120px);
+}
+
+.bgGlow1 {
+  top: -150px;
+  left: -150px;
+}
+
+.bgGlow2 {
+  bottom: -150px;
+  right: -150px;
+}

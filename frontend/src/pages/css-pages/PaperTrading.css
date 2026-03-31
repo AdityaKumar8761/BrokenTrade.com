@@ -1,0 +1,115 @@
+.stocksPage {
+  display: flex;
+  gap: 20px;
+  padding: 40px;
+  background: #f3f4f6;
+}
+
+/* CARD */
+.card {
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* LEFT */
+.simulator {
+  width: 40%;
+}
+
+/* RIGHT */
+.rightSide {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* PNL */
+.pnl {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.profit {
+  color: green;
+}
+
+.loss {
+  color: red;
+}
+
+/* TABLE */
+table {
+  width: 100%;
+  margin-top: 10px;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+}
+
+thead {
+  background: #e5e7eb;
+}
+
+/* BUTTONS */
+.buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.buy {
+  flex: 1;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.sell {
+  flex: 1;
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* LEARNING */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.item {
+  background: #f3f4f6;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+/* CHART */
+.chartBox {
+  height: 200px;
+  background: #e5e7eb;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tradeBtn {
+  margin-top: 10px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+}

@@ -1,0 +1,76 @@
+.ticker-wrapper {
+  margin-top: 50px;
+  margin-left: 50px;
+  margin-right: 50px;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  background: white; /* light Groww-like bg */
+  padding: 10px 0;
+}
+
+/* Fade effect */
+.fade-left,
+.fade-right {
+  position: absolute;
+  top: 0;
+  width: 80px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.fade-left {
+  left: 0;
+  background: linear-gradient(to right, white, transparent);
+}
+
+.fade-right {
+  right: 0;
+  background: linear-gradient(to left, white   , transparent);
+}
+
+/* Ticker */
+.ticker {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.ticker-track {
+  display: inline-flex;
+  animation: scroll 20s linear infinite;
+}
+
+/* Animation */
+@keyframes scroll {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Items */
+.ticker-item {
+  display: flex;
+  align-items: center;
+  margin: 0 30px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1f2937;
+}
+
+.name {
+  margin-right: 8px;
+  color: #6b7280;
+}
+
+.value {
+  margin-right: 8px;
+}
+
+.change {
+  color: #00b386; /* Groww green */
+  font-weight: 600;
+}

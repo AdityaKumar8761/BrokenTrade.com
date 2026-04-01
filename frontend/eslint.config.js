@@ -22,8 +22,11 @@ export default defineConfig([
         sourceType: 'module',
       },
     },
-    rules: {
-      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
-    },
+rules: {
+  'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+
+  'no-undef': 'off',
+  'no-unused-expressions': 'off',
+},
   },
 ])

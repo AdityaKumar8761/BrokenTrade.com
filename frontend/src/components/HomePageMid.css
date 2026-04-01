@@ -1,0 +1,119 @@
+.mid-container {
+  width: 100%;
+  padding: 80px 0;
+  background: #f7f9fb;
+  text-align: center;
+}
+
+.mid-heading {
+  font-size: 32px;
+  color: #374151;
+  margin-bottom: 50px;
+}
+
+/* GRID */
+.mid-grid {
+  width: 90%;
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 25px;
+}
+
+/* CARDS */
+.card {
+  background: white;
+  border-radius: 20px;
+  padding: 25px;
+  text-align: left;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+/* POP EFFECT */
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+/* DIFFERENT SIZES */
+.stocks {
+  grid-row: span 2;
+}
+
+.bonds {
+  grid-column: span 2;
+  text-align: center;
+}
+
+/* STOCK LIST */
+.stock-item {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  font-weight: 500;
+}
+
+/* ETF ICONS */
+.icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.icon {
+  font-size: 24px;
+  transition: transform 0.3s;
+}
+
+.card:hover .icon {
+  transform: scale(1.2);
+}
+
+/* HOVER TEXT */
+.hover-text {
+  margin-top: 15px;
+  color: #2563eb;
+  font-weight: 500;
+}
+
+/* IPO */
+.ipo-list {
+  margin-top: 15px;
+}
+
+.ipo-item {
+  margin-bottom: 10px;
+}
+
+.apply-btn {
+  margin-top: 15px;
+  padding: 8px 16px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+}
+
+/* BONDS */
+.bonds p {
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .mid-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stocks,
+  .bonds {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+}

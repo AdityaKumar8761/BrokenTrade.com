@@ -6,14 +6,14 @@ export function Header() {
     <header className="header">
       
       <div className="logo">
-        Brokentrad
+        Brok&Treade
       </div>
 
       <nav className="navLinks">
         <Link to="/My-Dashboard">MY Dashboard</Link>
         <Link to="/fo">Instructor</Link>
         <Link to="/mutualfunds">Practice</Link>
-        <Link to="/learn">Learn</Link>
+        <Link to="/learn">My brokers</Link>
       </nav>
 
       <Link to="/login">

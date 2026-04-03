@@ -125,3 +125,20 @@
   bottom: -150px;
   right: -150px;
 }
+
+.left h2,
+.right h2 {
+  margin-bottom: 10px; /* space below heading */
+}
+
+.left p,
+.right p {
+  margin-bottom: 20px; /* space below "Don't have account" */
+}
+
+/* Dropdown styling */
+.select {
+  appearance: none; /* remove default ugly arrow */
+  background-color: white;
+  cursor: pointer;
+}

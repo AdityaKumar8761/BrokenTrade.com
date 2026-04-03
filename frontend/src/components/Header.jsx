@@ -10,9 +10,9 @@ export function Header() {
       </div>
 
       <nav className="navLinks">
-        <Link to="/stocks">Stocks</Link>
-        <Link to="/fo">F&O</Link>
-        <Link to="/mutualfunds">Mutual Funds</Link>
+        <Link to="/My-Dashboard">MY Dashboard</Link>
+        <Link to="/fo">Instructor</Link>
+        <Link to="/mutualfunds">Practice</Link>
         <Link to="/learn">Learn</Link>
       </nav>
 

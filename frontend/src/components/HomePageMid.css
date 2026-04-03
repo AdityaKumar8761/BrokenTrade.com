@@ -1,7 +1,9 @@
 .mid-container {
+  margin-top: 100px;
+  margin-bottom: 300px;
   width: 100%;
   padding: 80px 0;
-  background: #f7f9fb;
+  background: #ffffff;
   text-align: center;
 }
 

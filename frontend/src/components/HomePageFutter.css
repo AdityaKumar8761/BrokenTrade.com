@@ -1,0 +1,127 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Make page full height */
+html, body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Main content should expand */
+.main-content {
+  flex: 1;
+}
+
+/* Footer styling */
+.footer {
+  background-color: #0f172a;
+  color: #e2e8f0;
+  padding: 40px 20px 20px;
+  margin-top: auto; /* THIS makes it stick to bottom */
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-section h3,
+.footer-section h4 {
+  margin-bottom: 10px;
+}
+
+.footer-section p {
+  font-size: 14px;
+  color: #94a3b8;
+}
+
+.footer-section ul {
+  list-style: none;
+}
+
+.footer-section ul li {
+  margin: 8px 0;
+}
+
+.footer-section ul li a {
+  text-decoration: none;
+  color: #cbd5f5;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.footer-section ul li a:hover {
+  color: #38bdf8;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  border-top: 1px solid #1e293b;
+  padding-top: 15px;
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+/* 🔹 Center Brand */
+.footer-brand {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.footer-brand h1 {
+  font-size: 32px;
+  color: white;
+}
+
+.footer-brand p {
+  color: #94a3b8;
+  margin-top: 8px;
+}
+
+/* 🔹 Middle 3 Columns */
+.footer-container {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+/* 🔹 Creators Section */
+.footer-creators {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.footer-creators h3 {
+  margin-bottom: 20px;
+}
+
+.creator-list {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.creator {
+  max-width: 200px;
+}
+
+.creator h4 {
+  color: white;
+  margin-bottom: 5px;
+}
+
+.creator p {
+  font-size: 13px;
+  color: #94a3b8;
+}

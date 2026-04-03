@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "name": "Rahul Sharma",
+    "image": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e",
+    "description": "Expert in stock market and F&O trading.",
+    "rating": 4.8,
+    "gig": "₹499/session"
+  },
+  {
+    "id": 2,
+    "name": "Priya Mehta",
+    "image": "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
+    "description": "Helps beginners learn investing.",
+    "rating": 4.6,
+    "gig": "₹299/session"
+  }
+]

@@ -52,12 +52,13 @@ export function LoginPage() {
           <input className="input" type="date" />
           <input className="input" type="password" placeholder="Password" />
 
-          <select className="input">
-            <option>Select Account Type</option>
-            <option>Broker</option>
-            <option>New Learner</option>
-            <option>Trainer</option>
-            <option>Admin</option>
+
+          <select className="input select">
+            <option value="">Select Account Type</option>
+            <option value="learner">Learner</option>
+            <option value="instructor">Instructor</option>
+            <option value="broker">Broker</option>
+            <option value="admin">Admin</option>
           </select>
 
           <button className="button">Create Account</button>

@@ -28,7 +28,7 @@ export function HomePageMid(){
           onMouseEnter={() => setHovered("stocks")}
           onMouseLeave={() => setHovered(null)}
         >
-          <h3>Stocks</h3>
+          <h3>LEARN ABOUT INVESTING</h3>
 
           <div className="stock-list">
             {stockData.map((s, i) => (
@@ -48,16 +48,16 @@ export function HomePageMid(){
           onMouseEnter={() => setHovered("etf")}
           onMouseLeave={() => setHovered(null)}
         >
-          <h3>ETFs</h3>
+          <h3>Learn Trading</h3>
           <div className="icons">
             <div className="icon">💰</div>
-            <div className="icon">🌍</div>
-            <div className="icon">📈</div>
+            <div className="icon">         🌍</div>
+            <div className="icon">         📈</div>
           </div>
 
           {hovered === "etf" && (
             <p className="hover-text">
-              Gold, Global & Index ETFs
+              Forex , Crypto , Intraday
             </p>
           )}
         </div>
@@ -86,7 +86,7 @@ export function HomePageMid(){
           onMouseEnter={() => setHovered("bonds")}
           onMouseLeave={() => setHovered(null)}
         >
-          <h3>Bonds</h3>
+          <h3>learn about Bonds</h3>
 
           <p>
             {hovered === "bonds"

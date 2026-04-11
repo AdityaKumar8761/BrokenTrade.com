@@ -1,27 +1,51 @@
 const mongoose = require('mongoose');
 
-
-//Define the person Schema
+//Define the User Schema
 const UserSchema = new mongoose.Schema({
     name: {
-        type : String,
-        required: true
+        type: String,
+        required: true,
+        trim: true,
     },
-
-      password: {
-    type: String,
-    required: true,
-    minlength: 6,
-  },
-
+    email: {
+        type: String,
+        required: true,
+        unique: true,
+        lowercase: true,
+        trim: true,
+    },
+    mobile: {
+        type: String,
+        required: true,
+        trim: true,
+    },
+    pan: {
+        type: String,
+        required: true,
+        uppercase: true,
+        trim: true,
+    },
+    dob: {
+        type: Date,
+        required: true,
+    },
+    password: {
+        type: String,
+        required: true,
+        minlength: 6,
+    },
     type: {
-        type : String,
-        enum : ['Learner' , 'Instructor' , 'Broker' , 'Admin'],
-        required : true
+        type: String,
+        enum: ['Learner', 'Instructor', 'Broker', 'Admin'],
+        required: true,
+        default: 'Learner',
     },
+    createdAt: {
+        type: Date,
+        default: Date.now,
+    },
+});
 
-})
-
-//create person model
-const User = mongoose.model('User' , UserSchema);
+//Create User model
+const User = mongoose.model('User', UserSchema);
 module.exports = User;

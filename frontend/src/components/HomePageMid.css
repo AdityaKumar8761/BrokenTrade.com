@@ -1,121 +1,321 @@
-.mid-container {
-  margin-top: 100px;
-  margin-bottom: 300px;
+/* ========================
+   FEATURES / MID SECTION
+   ======================== */
+
+.mid {
   width: 100%;
-  padding: 80px 0;
-  background: #ffffff;
+  padding: var(--space-5xl) 0;
+  background: var(--color-bg);
+}
+
+.mid__container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+/* Section Header */
+.mid__header {
   text-align: center;
+  margin-bottom: var(--space-3xl);
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
 }
 
-.mid-heading {
-  font-size: 32px;
-  color: #374151;
-  margin-bottom: 50px;
+.mid--visible .mid__header {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-/* GRID */
-.mid-grid {
-  width: 90%;
-  max-width: 1100px;
-  margin: auto;
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-template-rows: auto auto;
-  gap: 25px;
+.mid__label {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--color-accent);
+  margin-bottom: var(--space-md);
 }
 
-/* CARDS */
-.card {
-  background: white;
-  border-radius: 20px;
-  padding: 25px;
-  text-align: left;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
+.mid__heading {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -1px;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-md);
 }
 
-/* POP EFFECT */
-.card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+.mid__heading-accent {
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-/* DIFFERENT SIZES */
-.stocks {
-  grid-row: span 2;
-}
-
-.bonds {
-  grid-column: span 2;
-  text-align: center;
-}
-
-/* STOCK LIST */
-.stock-item {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 15px;
-  font-weight: 500;
-}
-
-/* ETF ICONS */
-.icons {
-  display: flex;
-  gap: 15px;
-  margin-top: 20px;
-}
-
-.icon {
-  font-size: 24px;
-  transition: transform 0.3s;
-}
-
-.card:hover .icon {
-  transform: scale(1.2);
-}
-
-/* HOVER TEXT */
-.hover-text {
-  margin-top: 15px;
-  color: #2563eb;
-  font-weight: 500;
-}
-
-/* IPO */
-.ipo-list {
-  margin-top: 15px;
-}
-
-.ipo-item {
-  margin-bottom: 10px;
-}
-
-.apply-btn {
-  margin-top: 15px;
-  padding: 8px 16px;
-  background: #2563eb;
-  color: white;
-  border: none;
-  border-radius: 8px;
-}
-
-/* BONDS */
-.bonds p {
+.mid__description {
+  max-width: 520px;
+  margin: 0 auto;
   font-size: 16px;
-  transition: all 0.3s ease;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
 }
 
-/* RESPONSIVE */
+/* Grid */
+.mid__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+/* Cards */
+.mid__card {
+  position: relative;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-out);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.mid--visible .mid__card {
+  animation: card-enter 0.6s var(--ease-out) forwards;
+}
+
+@keyframes card-enter {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mid__card:hover {
+  border-color: rgba(37, 99, 235, 0.15);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+
+.mid__card--active {
+  border-color: rgba(37, 99, 235, 0.2);
+}
+
+/* Card Top */
+.mid__card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-md);
+}
+
+.mid__card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mid__card-tag {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+}
+
+.mid__card-tag--investing {
+  background: rgba(37, 99, 235, 0.08);
+  color: #2563eb;
+}
+
+.mid__card-tag--trading {
+  background: rgba(139, 92, 246, 0.08);
+  color: #8b5cf6;
+}
+
+.mid__card-tag--ipo {
+  background: rgba(16, 185, 129, 0.08);
+  color: #10b981;
+}
+
+.mid__card-tag--bonds {
+  background: rgba(245, 158, 11, 0.08);
+  color: #f59e0b;
+}
+
+/* Card Content */
+.mid__card-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 8px;
+  letter-spacing: -0.3px;
+}
+
+.mid__card-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-md);
+}
+
+/* Stocks in card */
+.mid__card-stocks {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--color-border);
+}
+
+.mid__stock-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 13px;
+}
+
+.mid__stock-name {
+  font-weight: 600;
+  color: var(--color-text-primary);
+  min-width: 80px;
+}
+
+.mid__stock-price {
+  color: var(--color-text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+.mid__stock-change {
+  font-weight: 600;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  font-variant-numeric: tabular-nums;
+}
+
+.mid__stock-change--up {
+  background: var(--color-green-bg);
+  color: var(--color-green);
+}
+
+.mid__stock-change--down {
+  background: var(--color-red-bg);
+  color: var(--color-red);
+}
+
+/* Category Pills */
+.mid__card-categories {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--color-border);
+}
+
+.mid__category-pill {
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  color: var(--color-text-secondary);
+  transition: all var(--duration-fast) ease;
+}
+
+.mid__card:hover .mid__category-pill {
+  background: rgba(139, 92, 246, 0.06);
+  border-color: rgba(139, 92, 246, 0.15);
+  color: #8b5cf6;
+}
+
+/* IPO Rows */
+.mid__card-ipos {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--color-border);
+}
+
+.mid__ipo-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.mid__ipo-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  animation: dot-pulse 2s ease-in-out infinite;
+}
+
+/* Stats */
+.mid__card-stats {
+  display: flex;
+  gap: var(--space-lg);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--color-border);
+}
+
+.mid__stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.mid__stat-value {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--color-text-primary);
+}
+
+.mid__stat-label {
+  font-size: 12px;
+  color: var(--color-text-tertiary);
+  font-weight: 500;
+}
+
+/* Arrow */
+.mid__card-arrow {
+  position: absolute;
+  bottom: var(--space-lg);
+  right: var(--space-lg);
+  color: var(--color-text-tertiary);
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.mid__card:hover .mid__card-arrow {
+  opacity: 1;
+  transform: translateX(0);
+  color: var(--color-accent);
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-  .mid-grid {
-    grid-template-columns: 1fr;
+  .mid {
+    padding: var(--space-3xl) 0;
   }
 
-  .stocks,
-  .bonds {
-    grid-column: span 1;
-    grid-row: span 1;
+  .mid__grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .mid__card {
+    padding: var(--space-lg);
   }
 }

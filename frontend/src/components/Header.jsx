@@ -30,7 +30,7 @@ export function Header() {
   const navItems = [
     { label: 'Dashboard', path: '/My-Dashboard' },
     { label: 'Instructors', path: '/fo' },
-    { label: 'Practice', path: '/mutualfunds' },
+    { label: 'Learn', path: '/mutualfunds' },
     { label: 'Brokers', path: '/learn' },
   ];
 
@@ -83,7 +83,7 @@ export function Header() {
                 </span>
                 <span className="header__avatar-name">{user.name}</span>
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className={`header__chevron ${dropdownOpen ? 'header__chevron--open' : ''}`}>
-                  <path d="M3.5 5.25L7 8.75L10.5 5.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M3.5 5.25L7 8.75L10.5 5.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </button>
 
@@ -114,7 +114,7 @@ export function Header() {
               <button className="header__cta">
                 Get Started
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="header__cta-arrow">
-                  <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </button>
             </Link>

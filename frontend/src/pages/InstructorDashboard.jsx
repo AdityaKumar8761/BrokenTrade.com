@@ -1,3 +1,4 @@
+import './css-pages/InstructorDashboard.css';
 import { Header } from '../components/Header';
 import { useAuth } from '../context/AuthContext';
 
@@ -7,15 +8,15 @@ export function InstructorDashboard() {
   return (
     <>
       <Header />
-      <div style={{ maxWidth: '1200px', margin: '140px auto 40px', padding: '0 20px' }}>
-        <h1 style={{ fontSize: '28px', fontWeight: 'bold' }}>Instructor Dashboard</h1>
-        <p style={{ marginTop: '16px', color: '#52525b' }}>
+      <div className="instructor-container">
+        <h1 className="instructor-title">Instructor Dashboard</h1>
+        <p className="instructor-greeting">
           Welcome, {user?.name}! Your teaching tools and course management panel is under construction.
         </p>
-        <div style={{ marginTop: '32px', padding: '40px', textAlign: 'center', background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '12px' }}>
-          <span style={{ fontSize: '48px' }}>👨‍🏫</span>
-          <h2 style={{ marginTop: '16px', fontSize: '20px', fontWeight: '600', color: '#1e293b' }}>Course Creator Loading</h2>
-          <p style={{ marginTop: '8px', color: '#64748b' }}>Check back later to upload your trading materials and manage students.</p>
+        <div className="instructor-content-box">
+          <span className="instructor-icon">👨‍🏫</span>
+          <h2 className="instructor-subtitle">Course Creator Loading</h2>
+          <p className="instructor-desc">Check back later to upload your trading materials and manage students.</p>
         </div>
       </div>
     </>

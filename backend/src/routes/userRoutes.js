@@ -98,4 +98,45 @@ router.get('/all', async (req, res) => {
     }
 });
 
+// ─── UPDATE USER ──────────────────────────────────────────────
+router.put('/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const updates = req.body;
+
+        // Prevent password update through this route for security
+        if (updates.password) {
+            delete updates.password;
+        }
+
+        const updatedUser = await User.findByIdAndUpdate(id, updates, { new: true }).select('-password');
+
+        if (!updatedUser) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        res.status(200).json(updatedUser);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+// ─── DELETE USER ──────────────────────────────────────────────
+router.delete('/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const deletedUser = await User.findByIdAndDelete(id);
+
+        if (!deletedUser) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        res.status(200).json({ message: 'User deleted successfully' });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
 module.exports = router;

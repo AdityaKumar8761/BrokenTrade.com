@@ -1,10 +1,26 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Hero.css";
 import heroImage from "../assets/homepageimage.png";
 import { Link } from "react-router-dom";
 
 export function Hero() {
   const heroRef = useRef(null);
+  const [userCount, setUserCount] = useState("10K+");
+
+  useEffect(() => {
+    const fetchCount = async () => {
+      try {
+        const res = await fetch('http://localhost:5000/User/count');
+        if (res.ok) {
+          const data = await res.json();
+          setUserCount(data.count.toLocaleString());
+        }
+      } catch (err) {
+        console.error("Failed to fetch user count", err);
+      }
+    };
+    fetchCount();
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -24,11 +40,7 @@ export function Hero() {
   return (
     <section className="hero" ref={heroRef} id="hero-section">
       <div className="hero__container">
-        {/* Badge */}
-        <div className="hero__badge">
-          <span className="hero__badge-dot" />
-          <span>India's #1 Paper Trading Platform</span>
-        </div>
+
 
         {/* Heading */}
         <h1 className="hero__heading">
@@ -39,7 +51,7 @@ export function Hero() {
 
         {/* Subtitle */}
         <p className="hero__subtitle">
-          Practice stock trading with virtual money, learn from expert instructors, 
+          Practice stock trading with virtual money, learn from expert instructors,
           and build your confidence before entering real markets.
         </p>
 
@@ -49,7 +61,7 @@ export function Hero() {
             <button className="hero__btn hero__btn--primary" id="hero-cta-primary">
               Start Paper Trading
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                <path d="M4 9H14M14 9L10 5M14 9L10 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M4 9H14M14 9L10 5M14 9L10 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </button>
           </Link>
@@ -63,7 +75,7 @@ export function Hero() {
         {/* Trust signals */}
         <div className="hero__trust">
           <div className="hero__trust-item">
-            <span className="hero__trust-number">10K+</span>
+            <span className="hero__trust-number">{userCount}</span>
             <span className="hero__trust-label">Active Learners</span>
           </div>
           <div className="hero__trust-divider" />

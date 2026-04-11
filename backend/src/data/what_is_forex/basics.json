@@ -1,0 +1,9 @@
+{
+  "title": "Forex Basics",
+  "content": [
+    { "type": "heading", "text": "What is Forex?" },
+    { "type": "paragraph", "text": "Forex (Foreign Exchange) is a global decentralized or over-the-counter market for the trading of currencies." },
+    { "type": "heading", "text": "Currency Pairs" },
+    { "type": "paragraph", "text": "Currencies are traded in pairs, such as the EUR/USD. The value of one currency is determined by its comparison to another." }
+  ]
+}

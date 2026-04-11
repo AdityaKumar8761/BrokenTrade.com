@@ -1,0 +1,21 @@
+{
+    "title": "Trading Basics",
+    "content": [
+        {
+            "type": "heading",
+            "text": "Stock Trading 101"
+        },
+        {
+            "type": "paragraph",
+            "text": "Trading involves short-term buying and selling of financial assets like stocks, commodities, or currencies."
+        },
+        {
+            "type": "heading",
+            "text": "Bulls vs Bears"
+        },
+        {
+            "type": "paragraph",
+            "text": "Bull markets are characterized by rising prices, whereas Bear markets are characterized by falling prices."
+        }
+    ]
+}

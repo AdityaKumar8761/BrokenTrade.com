@@ -30,8 +30,8 @@ export function Header() {
   const navItems = [
     { label: 'Dashboard', path: '/My-Dashboard' },
     { label: 'Instructors', path: '/fo' },
-    { label: 'Learn', path: '/mutualfunds' },
-    { label: 'Brokers', path: '/learn' },
+    { label: 'Learn', path: '/learn' },
+    { label: 'Brokers', path: '/brokers' },
   ];
 
   return (

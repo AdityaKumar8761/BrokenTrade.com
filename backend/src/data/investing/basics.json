@@ -1,0 +1,9 @@
+{
+  "title": "Investing Basics",
+  "content": [
+    { "type": "heading", "text": "Introduction to Investing" },
+    { "type": "paragraph", "text": "Investing is the act of allocating resources, usually money, with the expectation of generating an income or profit." },
+    { "type": "heading", "text": "Why Invest?" },
+    { "type": "paragraph", "text": "Investing is essential to combat inflation and grow your wealth over time. The power of compound interest makes early investing particularly effective." }
+  ]
+}

@@ -98,6 +98,17 @@ router.get('/all', async (req, res) => {
     }
 });
 
+// ─── TOTAL USER COUNT ─────────────────────────────────────────
+router.get('/count', async (req, res) => {
+    try {
+        const count = await User.countDocuments();
+        res.status(200).json({ count });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
 // ─── UPDATE USER ──────────────────────────────────────────────
 router.put('/:id', async (req, res) => {
     try {

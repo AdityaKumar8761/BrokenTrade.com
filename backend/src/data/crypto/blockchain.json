@@ -1,0 +1,9 @@
+{
+  "title": "Blockchain Technology",
+  "content": [
+    { "type": "heading", "text": "The Blockchain" },
+    { "type": "paragraph", "text": "A blockchain is a decentralized, distributed, and public digital ledger that is used to record transactions across many computers." },
+    { "type": "heading", "text": "Why is it secure?" },
+    { "type": "paragraph", "text": "Because identical copies are stored across a whole network, a hacker cannot alter the ledger without changing at least 51% of it simultaneously." }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "title": "Upcoming IPOs",
+  "content": [
+    { "type": "heading", "text": "What is an IPO?" },
+    { "type": "paragraph", "text": "An Initial Public Offering (IPO) is the process by which a private company can go public by sale of its stocks to general public." },
+    { "type": "heading", "text": "How to Invest" },
+    { "type": "paragraph", "text": "Before investing, analyze the red herring prospectus (RHP) which details the company's financials and objectives." }
+  ]
+}

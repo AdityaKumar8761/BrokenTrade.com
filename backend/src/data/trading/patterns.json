@@ -1,0 +1,9 @@
+{
+  "title": "Trading Patterns",
+  "content": [
+    { "type": "heading", "text": "Chart Patterns" },
+    { "type": "paragraph", "text": "Chart patterns are visual representations of the psychology of the market. They help predict future price movements." },
+    { "type": "heading", "text": "Head and Shoulders" },
+    { "type": "paragraph", "text": "A reversal pattern indicating a trend change from bullish to bearish. It has three peaks, the middle being the highest." }
+  ]
+}

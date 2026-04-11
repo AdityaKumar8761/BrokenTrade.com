@@ -18,6 +18,10 @@ app.get("/", (req, res) => {
 const userRouters = require('./src/routes/userRoutes');
 app.use('/User', userRouters); // /User/register  and  /User/login
 
+// Importing documentation routes
+const docRouters = require('./src/routes/docRoutes');
+app.use('/docs', docRouters);
+
 app.listen(5000, () => {
   console.log("Server started on port 5000");
 });

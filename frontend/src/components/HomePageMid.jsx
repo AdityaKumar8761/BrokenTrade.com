@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import "./HomePageMid.css";
 
 const features = [
@@ -13,6 +14,7 @@ const features = [
     title: "Learn Investing",
     description: "Master the fundamentals of long-term wealth building with curated courses on stocks, mutual funds, and portfolio strategy.",
     tag: "Popular",
+    path: "/learn?category=investing&file=basics",
     stocks: [
       { name: "RELIANCE", price: "₹2,456.30", change: "+1.2%" },
       { name: "TCS", price: "₹3,890.50", change: "+0.8%" },
@@ -30,6 +32,7 @@ const features = [
     title: "Learn Trading",
     description: "Explore Forex, Crypto, and Intraday strategies with real-time simulations and expert analysis.",
     tag: "New",
+    path: "/learn?category=trading&file=basics",
     categories: ["Forex", "Crypto", "Intraday"],
   },
   {
@@ -43,6 +46,7 @@ const features = [
     title: "Upcoming IPOs",
     description: "Stay ahead with IPO listings, GMP data, and detailed analysis before you invest.",
     tag: "Live",
+    path: "/learn?category=ipo&file=basics",
     ipos: ["TechCorp Ltd", "FinEdge Pvt"],
   },
   {
@@ -56,6 +60,7 @@ const features = [
     title: "Bonds & Fixed Income",
     description: "Stable returns, low risk. Understand government and corporate bonds for a balanced portfolio.",
     tag: "Guide",
+    path: "/learn?category=bonds&file=basics",
     stats: { yield: "7.2%", safety: "AAA" },
   },
 ];
@@ -104,12 +109,13 @@ export function HomePageMid() {
         {/* Feature Cards Grid */}
         <div className="mid__grid">
           {features.map((feature, index) => (
-            <div
+            <Link
+              to={feature.path}
               key={feature.id}
               className={`mid__card ${activeCard === feature.id ? 'mid__card--active' : ''}`}
               onMouseEnter={() => setActiveCard(feature.id)}
               onMouseLeave={() => setActiveCard(null)}
-              style={{ animationDelay: `${index * 100}ms` }}
+              style={{ animationDelay: `${index * 100}ms`, textDecoration: 'none' }}
               id={`feature-card-${feature.id}`}
             >
               {/* Card Header */}
@@ -177,7 +183,7 @@ export function HomePageMid() {
                   <path d="M5 10H15M15 10L11 6M15 10L11 14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

@@ -10,7 +10,7 @@
   z-index: 1000;
   height: var(--header-height);
   transition: all var(--duration-normal) var(--ease-out);
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(0, 85, 255, 0.85);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid transparent;

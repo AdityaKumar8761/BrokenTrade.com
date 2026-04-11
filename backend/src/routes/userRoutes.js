@@ -86,4 +86,16 @@ router.post('/login', async (req, res) => {
     }
 });
 
+// ─── GET ALL USERS ──────────────────────────────────────────
+router.get('/all', async (req, res) => {
+    try {
+        // Fetch all users but exclude the password field
+        const users = await User.find({}, { password: 0 }).sort({ createdAt: -1 });
+        res.status(200).json(users);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
 module.exports = router;

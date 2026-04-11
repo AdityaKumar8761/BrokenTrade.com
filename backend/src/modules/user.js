@@ -44,6 +44,26 @@ const UserSchema = new mongoose.Schema({
         type: Date,
         default: Date.now,
     },
+    coins: {
+        type: Number,
+        default: 100000,
+    },
+    gig: {
+        type: String,
+        default: "",
+    },
+    rating: {
+        type: Number,
+        default: 0,
+    },
+    image: {
+        type: String,
+        default: "",
+    },
+    description: {
+        type: String,
+        default: "",
+    },
 });
 
 //Create User model

@@ -43,6 +43,16 @@ const CourseSchema = new mongoose.Schema({
         type: String,
         default: ""
     },
+    views: {
+        type: Number,
+        default: 0,
+        min: 0,
+    },
+    enrolledCount: {
+        type: Number,
+        default: 0,
+        min: 0,
+    },
     createdAt: {
         type: Date,
         default: Date.now

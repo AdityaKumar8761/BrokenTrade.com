@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+import '../styles/dashboard-shell.css';
 import './css-pages/LearnerDashboard.css';
 import { Header } from '../components/Header';
 import { useAuth } from '../context/AuthContext';
@@ -8,15 +10,53 @@ export function LearnerDashboard() {
   return (
     <>
       <Header />
-      <div className="dashboard-container">
-        <h1 className="dashboard-title">Learner Dashboard</h1>
-        <p className="dashboard-greeting">
-          Welcome, {user?.name}! Your personalized learning and paper trading space is being built.
-        </p>
-        <div className="dashboard-content-box">
-          <span className="dashboard-icon">📚</span>
-          <h2 className="dashboard-subtitle">Modules Coming Soon</h2>
-          <p className="dashboard-desc">Check back later to see your courses and practice trades.</p>
+      <div className="dash-page">
+        <div className="dash-inner">
+          <header className="dash-hero">
+            <div className="dash-hero__top">
+              <div>
+                <p className="dash-eyebrow">Learner</p>
+                <h1 className="dash-title">Your workspace</h1>
+                <p className="dash-lede">
+                  Hi <strong>{user?.name}</strong>. Jump back into courses, documentation, or paper trading from
+                  here. More personalised modules will layer onto this view over time.
+                </p>
+              </div>
+            </div>
+            <nav className="dash-quick" aria-label="Shortcuts">
+              <Link className="dash-quick__link" to="/courses">
+                <span className="dash-quick__icon" aria-hidden="true">
+                  ◆
+                </span>
+                <span>Browse courses</span>
+              </Link>
+              <Link className="dash-quick__link" to="/learn">
+                <span className="dash-quick__icon" aria-hidden="true">
+                  ≡
+                </span>
+                <span>Documentation</span>
+              </Link>
+              <Link className="dash-quick__link" to="/practice">
+                <span className="dash-quick__icon" aria-hidden="true">
+                  ∼
+                </span>
+                <span>Paper trading</span>
+              </Link>
+            </nav>
+          </header>
+
+          <section className="dash-panel learner-dash__panel">
+            <div className="dash-spotlight">
+              <div className="dash-spotlight__mark" aria-hidden="true">
+                L
+              </div>
+              <h2>Learning path</h2>
+              <p>
+                Your enrolled courses and practice history will surface in this panel as the platform grows. For
+                now, use the shortcuts above to stay in flow.
+              </p>
+            </div>
+          </section>
         </div>
       </div>
     </>

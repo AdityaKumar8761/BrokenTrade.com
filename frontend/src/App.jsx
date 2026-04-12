@@ -7,6 +7,7 @@ import { DocumentationPage } from './pages/DocumentationPage'
 import { CoursesPage } from './pages/CoursesPage'
 import { ProfilePage } from './pages/ProfilePage'
 import { InstructorUploadPage } from './pages/InstructorUploadPage'
+import { InstructorCoursePage } from './pages/InstructorCoursePage'
 import './App.css'
 
 function App() {
@@ -18,8 +19,10 @@ function App() {
       <Route path="/My-Dashboard" element={ <DashboardRouter/> } />
       <Route path="/learn" element={ <DocumentationPage/> } />
       <Route path="/courses" element={ <CoursesPage /> } />
+      <Route path="/instructor-course/:courseId" element={ <InstructorCoursePage /> } />
       <Route path="/profile" element={ <ProfilePage /> } />
       <Route path="/instructor/upload" element={ <InstructorUploadPage /> } />
+      <Route path="/instructor/course/:courseId/edit" element={ <InstructorUploadPage /> } />
     </Routes>
   )
 }

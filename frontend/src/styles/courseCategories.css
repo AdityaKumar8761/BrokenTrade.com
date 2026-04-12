@@ -1,0 +1,108 @@
+/* Course category colours (Bonds, Crypto, IPO, Finance, Trading, Investing) */
+
+.course-cat {
+  font-weight: 700;
+}
+
+/* On thumbnails, pills stay compact (YouTube-style chips) */
+.course-card__tag.course-cat {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+/* Trading — red */
+.course-cat--trading,
+.course-card__tag.course-cat--trading {
+  background: #dc2626;
+  color: #ffffff;
+}
+
+.course-card__placeholder.course-cat--trading {
+  color: #fecaca;
+}
+
+/* Finance — dark green */
+.course-cat--finance,
+.course-card__tag.course-cat--finance {
+  background: #166534;
+  color: #ecfdf5;
+}
+
+.course-card__placeholder.course-cat--finance {
+  color: #86efac;
+}
+
+/* Investing — blue */
+.course-cat--investing,
+.course-card__tag.course-cat--investing {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.course-card__placeholder.course-cat--investing {
+  color: #bfdbfe;
+}
+
+/* Bonds — violet */
+.course-cat--bonds,
+.course-card__tag.course-cat--bonds {
+  background: #7c3aed;
+  color: #faf5ff;
+}
+
+.course-card__placeholder.course-cat--bonds {
+  color: #ddd6fe;
+}
+
+/* Crypto — yellow */
+.course-cat--crypto,
+.course-card__tag.course-cat--crypto {
+  background: #facc15;
+  color: #422006;
+}
+
+.course-card__placeholder.course-cat--crypto {
+  color: #fde047;
+}
+
+/* IPO — light green */
+.course-cat--ipo,
+.course-card__tag.course-cat--ipo {
+  background: #bbf7d0;
+  color: #14532d;
+}
+
+.course-card__placeholder.course-cat--ipo {
+  color: #86efac;
+}
+
+/* Unknown category */
+.course-cat--default,
+.course-card__tag.course-cat--default {
+  background: #64748b;
+  color: #ffffff;
+}
+
+.course-card__placeholder.course-cat--default {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* Dashboard tables / inline pills */
+.dash-table .course-cat {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+/* Instructor course sidebar badge */
+.ic-sidebar__category {
+  margin: 8px 16px 0;
+}
+
+.ic-sidebar__category .course-cat {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+}

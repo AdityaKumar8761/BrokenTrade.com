@@ -1,7 +1,16 @@
 const express = require("express");
 const cors = require("cors");
+const mongoose = require("mongoose");
 const app = express();
 const db = require('./src/configures/db'); // initialize DB connection
+const seedSampleCourse = require('./src/seedSampleCourse');
+
+function runSampleCourseSeed() {
+    const run = () => seedSampleCourse().catch((e) => console.error(e));
+    if (mongoose.connection.readyState === 1) run();
+    else mongoose.connection.once('connected', run);
+}
+runSampleCourseSeed();
 
 // Middleware
 app.use(cors({

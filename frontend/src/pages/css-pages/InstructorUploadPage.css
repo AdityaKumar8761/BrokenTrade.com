@@ -31,6 +31,29 @@
     font-size: 16px;
 }
 
+.upload-header__subnav {
+    margin-top: 12px;
+    font-size: 14px;
+}
+
+.upload-header__subnav a {
+    color: var(--color-accent, #2563eb);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.upload-header__subnav a:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.upload-loading-msg {
+    text-align: center;
+    padding: 48px 20px;
+    color: var(--color-text-secondary);
+    font-size: 16px;
+}
+
 .upload-form {
     background: var(--color-surface);
     border: 1px solid var(--color-border);
@@ -206,6 +229,14 @@
     align-items: center;
     justify-content: center;
     background: var(--color-bg);
+}
+
+.denied-box a {
+    display: inline-block;
+    margin-top: 16px;
+    color: var(--color-accent, #2563eb);
+    font-weight: 600;
+    text-decoration: none;
 }
 
 .denied-box {

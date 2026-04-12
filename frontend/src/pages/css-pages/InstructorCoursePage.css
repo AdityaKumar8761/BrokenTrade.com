@@ -1,0 +1,351 @@
+.ic-page {
+  min-height: 100vh;
+  background: #f4f6f8;
+}
+
+.ic-loading,
+.ic-gate {
+  max-width: 640px;
+  margin: 120px auto 48px;
+  padding: 24px;
+  text-align: center;
+  color: #334155;
+}
+
+.ic-gate h1 {
+  font-size: 1.5rem;
+  margin: 0 0 12px;
+  color: #0f172a;
+}
+
+.ic-gate__lead {
+  margin: 0 0 20px;
+  line-height: 1.6;
+}
+
+.ic-gate__err {
+  color: #b91c1c;
+  font-weight: 600;
+}
+
+.ic-gate__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 22px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  background: #2563eb;
+  color: #fff;
+}
+
+.ic-gate__btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.ic-gate__back {
+  margin-top: 20px;
+}
+
+.ic-gate__back a {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.ic-shell {
+  display: flex;
+  max-width: 1280px;
+  margin: 88px auto 0;
+  min-height: calc(100vh - 88px);
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 0;
+  box-shadow: 0 12px 40px rgba(15, 23, 42, 0.06);
+}
+
+.ic-sidebar {
+  width: min(320px, 34vw);
+  border-right: 1px solid #e2e8f0;
+  background: #fafafa;
+  display: flex;
+  flex-direction: column;
+}
+
+.ic-sidebar__head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 16px;
+  font-weight: 700;
+  font-size: 14px;
+  color: #0f172a;
+  border-bottom: 1px solid #e2e8f0;
+  background: #f1f5f9;
+}
+
+.ic-sidebar__icon {
+  font-size: 18px;
+  line-height: 1;
+  color: #64748b;
+}
+
+.ic-sidebar__course {
+  padding: 14px 16px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f172a;
+  background: #e0f2fe;
+  border-bottom: 1px solid #bae6fd;
+}
+
+.ic-lessons {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 0 16px;
+}
+
+.ic-lesson {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  text-align: left;
+  padding: 12px 16px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 13px;
+  color: #334155;
+  border-left: 3px solid transparent;
+}
+
+.ic-lesson:hover {
+  background: #f1f5f9;
+}
+
+.ic-lesson--active {
+  background: #ecfdf5;
+  border-left-color: #22c55e;
+  color: #064e3b;
+}
+
+.ic-lesson__play {
+  flex-shrink: 0;
+  font-size: 11px;
+  margin-top: 2px;
+  opacity: 0.55;
+}
+
+.ic-lesson--active .ic-lesson__play {
+  opacity: 0.9;
+}
+
+.ic-lesson__text {
+  line-height: 1.45;
+}
+
+.ic-main {
+  flex: 1;
+  min-width: 0;
+  padding: 0 0 32px;
+  background: #fff;
+}
+
+.ic-banner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 20px;
+  background: linear-gradient(90deg, #1e293b, #334155);
+  color: #fff;
+  flex-wrap: wrap;
+}
+
+.ic-banner__brand {
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.ic-banner__meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.ic-banner__course {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.ic-banner__inst {
+  font-size: 13px;
+  opacity: 0.85;
+  margin-top: 4px;
+}
+
+.ic-banner__actions {
+  margin-left: auto;
+}
+
+.ic-banner__edit {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  color: #0f172a;
+  background: #e2e8f0;
+  border: 1px solid #cbd5e1;
+}
+
+.ic-banner__edit:hover {
+  background: #fff;
+}
+
+.ic-main__top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px 0;
+}
+
+.ic-lecture-title {
+  margin: 0;
+  font-size: clamp(20px, 2.4vw, 26px);
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+  flex: 1;
+  min-width: 200px;
+}
+
+.ic-nav-lectures {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.ic-nav-btn {
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  background: #fff;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  color: #0f172a;
+}
+
+.ic-nav-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.ic-nav-btn--next {
+  border-color: #94a3b8;
+}
+
+.ic-tabs {
+  display: flex;
+  gap: 0;
+  padding: 0 24px;
+  margin-top: 16px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.ic-tab {
+  padding: 10px 18px;
+  border: none;
+  background: transparent;
+  font-weight: 700;
+  font-size: 14px;
+  color: #64748b;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -1px;
+}
+
+.ic-tab--on {
+  color: #0f172a;
+  border-bottom-color: #2563eb;
+}
+
+.ic-panel {
+  padding: 20px 24px 0;
+}
+
+.ic-embed {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  background: #0f172a;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.ic-embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.ic-panel__empty {
+  margin: 0;
+  padding: 24px;
+  text-align: center;
+  color: #64748b;
+  background: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  border-radius: 8px;
+}
+
+.ic-panel--notes {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.ic-note-para {
+  margin: 0 0 14px;
+  line-height: 1.65;
+  color: #334155;
+  font-size: 15px;
+}
+
+.ic-foot {
+  margin: 28px 24px 0;
+  font-size: 14px;
+}
+
+.ic-foot a {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+@media (max-width: 900px) {
+  .ic-shell {
+    flex-direction: column;
+    margin-top: 72px;
+  }
+
+  .ic-sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #e2e8f0;
+    max-height: 280px;
+  }
+}

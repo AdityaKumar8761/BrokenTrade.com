@@ -7,8 +7,8 @@ const features = [
     id: "investing",
     icon: (
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-        <rect width="32" height="32" rx="8" fill="rgba(37, 99, 235, 0.1)"/>
-        <path d="M10 22L14 14L18 18L22 10" stroke="#2563eb" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        <rect width="32" height="32" rx="8" fill="rgba(37, 99, 235, 0.1)" />
+        <path d="M10 22L14 14L18 18L22 10" stroke="#2563eb" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
     title: "Learn Investing",
@@ -25,8 +25,8 @@ const features = [
     id: "trading",
     icon: (
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-        <rect width="32" height="32" rx="8" fill="rgba(139, 92, 246, 0.1)"/>
-        <path d="M10 16H14L16 12L18 20L20 16H22" stroke="#8b5cf6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        <rect width="32" height="32" rx="8" fill="rgba(139, 92, 246, 0.1)" />
+        <path d="M10 16H14L16 12L18 20L20 16H22" stroke="#8b5cf6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
     title: "Learn Trading",
@@ -39,8 +39,8 @@ const features = [
     id: "ipo",
     icon: (
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-        <rect width="32" height="32" rx="8" fill="rgba(16, 185, 129, 0.1)"/>
-        <path d="M16 10V22M16 10L20 14M16 10L12 14" stroke="#10b981" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        <rect width="32" height="32" rx="8" fill="rgba(16, 185, 129, 0.1)" />
+        <path d="M16 10V22M16 10L20 14M16 10L12 14" stroke="#10b981" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
     title: "Upcoming IPOs",
@@ -53,8 +53,8 @@ const features = [
     id: "bonds",
     icon: (
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-        <rect width="32" height="32" rx="8" fill="rgba(245, 158, 11, 0.1)"/>
-        <path d="M11 21V14M16 21V11M21 21V16" stroke="#f59e0b" strokeWidth="2" strokeLinecap="round"/>
+        <rect width="32" height="32" rx="8" fill="rgba(245, 158, 11, 0.1)" />
+        <path d="M11 21V14M16 21V11M21 21V16" stroke="#f59e0b" strokeWidth="2" strokeLinecap="round" />
       </svg>
     ),
     title: "Bonds & Fixed Income",
@@ -101,7 +101,7 @@ export function HomePageMid() {
             <span className="mid__heading-accent">master the markets</span>
           </h2>
           <p className="mid__description">
-            From beginner-friendly investing guides to advanced trading strategies — 
+            From beginner-friendly investing guides to advanced trading strategies —
             we've got your financial education covered.
           </p>
         </div>
@@ -180,7 +180,7 @@ export function HomePageMid() {
               {/* Arrow indicator */}
               <div className="mid__card-arrow">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <path d="M5 10H15M15 10L11 6M15 10L11 14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M5 10H15M15 10L11 6M15 10L11 14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </div>
             </Link>

@@ -4,6 +4,9 @@ import { LoginPage } from './pages/LoginPage'
 import { PaperTrading } from './pages/PaperTrading'
 import { DashboardRouter } from './pages/DashboardRouter'
 import { DocumentationPage } from './pages/DocumentationPage'
+import { CoursesPage } from './pages/CoursesPage'
+import { ProfilePage } from './pages/ProfilePage'
+import { InstructorUploadPage } from './pages/InstructorUploadPage'
 import './App.css'
 
 function App() {
@@ -14,7 +17,10 @@ function App() {
       <Route path="/practice" element={ <PaperTrading/>} />
       <Route path="/My-Dashboard" element={ <DashboardRouter/> } />
       <Route path="/learn" element={ <DocumentationPage/> } />
-     </Routes>
+      <Route path="/courses" element={ <CoursesPage /> } />
+      <Route path="/profile" element={ <ProfilePage /> } />
+      <Route path="/instructor/upload" element={ <InstructorUploadPage /> } />
+    </Routes>
   )
 }
 

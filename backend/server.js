@@ -22,6 +22,17 @@ app.use('/User', userRouters); // /User/register  and  /User/login
 const docRouters = require('./src/routes/docRoutes');
 app.use('/docs', docRouters);
 
+// Importing course routes
+const courseRouters = require('./src/routes/courseRoutes');
+app.use('/Courses', courseRouters);
+
+// Serve Static Files from uploads directory
+app.use('/uploads', express.static('uploads'));
+
+// Importing upload routes
+const uploadRouters = require('./src/routes/uploadRoutes');
+app.use('/upload', uploadRouters);
+
 app.listen(5000, () => {
   console.log("Server started on port 5000");
 });

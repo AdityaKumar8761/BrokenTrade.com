@@ -51,13 +51,29 @@
 }
 
 @keyframes dot-pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(0.8); }
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
 }
 
 @keyframes badge-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
-  50% { box-shadow: 0 0 0 6px rgba(37, 99, 235, 0.06); }
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
+  }
+
+  50% {
+    box-shadow: 0 0 0 6px rgba(37, 99, 235, 0.06);
+  }
 }
 
 /* Heading */
@@ -109,11 +125,11 @@
 .hero__btn--primary {
   background: var(--color-text-primary);
   color: white;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
 .hero__btn--primary:hover {
-  box-shadow: 0 6px 28px rgba(0,0,0,0.22);
+  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.22);
   transform: translateY(-2px);
 }
 
@@ -198,10 +214,10 @@
   border-radius: var(--radius-xl);
   overflow: hidden;
   border: 1px solid var(--color-border);
-  box-shadow: 
-    0 4px 12px rgba(0,0,0,0.04),
-    0 16px 40px rgba(0,0,0,0.06),
-    0 32px 80px rgba(0,0,0,0.04);
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.04),
+    0 16px 40px rgba(0, 0, 0, 0.06),
+    0 32px 80px rgba(0, 0, 0, 0.04);
   background: var(--color-surface);
 }
 

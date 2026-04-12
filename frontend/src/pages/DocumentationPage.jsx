@@ -13,17 +13,14 @@ export function DocumentationPage() {
   const [error, setError] = useState('');
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
-  // Link URL Query Params to Active State
   useEffect(() => {
-    window.scrollTo(0, 0); // Fix scroll carry-over from previous page
-
     const params = new URLSearchParams(location.search);
     const cat = params.get('category');
     const file = params.get('file');
     if (cat && file) {
       setActiveDoc({ category: cat, file });
     }
-  }, [location.search]);
+  }, [location.search, setActiveDoc]);
 
   // Fetch structure
   useEffect(() => {
@@ -71,14 +68,18 @@ export function DocumentationPage() {
   // Fetch content when topic changes
   useEffect(() => {
     if (!activeDoc) return;
-    
+
     setLoadingContent(true);
     fetch(`http://localhost:5000/docs/content/${activeDoc.category}/${activeDoc.file}`)
       .then(res => {
         if (!res.ok) throw new Error('Failed to load document');
         return res.json();
       })
-      .then(data => setDocContent(data))
+      .then(data => {
+        setDocContent(data);
+        // Defer scroll reset until DOM paints the new content
+        setTimeout(() => window.scrollTo({ top: 0, behavior: 'instant' }), 0);
+      })
       .catch(err => {
         console.error(err);
         setDocContent(null);
@@ -92,7 +93,7 @@ export function DocumentationPage() {
     <>
       <Header />
       <div className="docs-layout">
-        
+
         {/* LEFT SIDEBAR (Navigation) */}
         <div className={`docs-sidebar docs-sidebar-left ${!sidebarOpen ? 'docs-sidebar--closed' : ''}`}>
           <div className="docs-sidebar-header">
@@ -103,7 +104,7 @@ export function DocumentationPage() {
             </button>
           </div>
           {error && <p className="docs-error">{error}</p>}
-          
+
           {structure.length === 0 && !error ? (
             <p className="docs-loading-text">Loading guide...</p>
           ) : (
@@ -116,8 +117,8 @@ export function DocumentationPage() {
                   </div>
                   <ul className="docs-files">
                     {categoryObj.files.map(file => (
-                      <li 
-                        key={file} 
+                      <li
+                        key={file}
                         className={`docs-file-item ${activeDoc?.category === categoryObj.category && activeDoc?.file === file ? 'active' : ''}`}
                         onClick={() => handleNavClick({ category: categoryObj.category, file })}
                       >
@@ -136,7 +137,7 @@ export function DocumentationPage() {
 
         {/* MIDDLE CONTENT PANE */}
         <div className={`docs-main-content ${!sidebarOpen ? 'docs-main--expanded' : ''}`}>
-          
+
           {/* Unhide button when sidebar is closed */}
           {!sidebarOpen && (
             <button className="docs-toggle-btn-outer" onClick={() => setSidebarOpen(true)} title="Show Sidebar">
@@ -182,7 +183,7 @@ export function DocumentationPage() {
                 </div>
               ) : (
                 <div className="docs-empty">
-                  <p style={{color:'red'}}>Error loading document content.</p>
+                  <p style={{ color: 'red' }}>Error loading document content.</p>
                 </div>
               )}
             </div>
@@ -219,7 +220,7 @@ export function DocumentationPage() {
         )}
 
       </div>
-      
+
       {/* Full-width footer below layout */}
       <HomePageFutter />
     </>

@@ -29,7 +29,7 @@ export function Header() {
 
   const navItems = [
     { label: 'Dashboard', path: '/My-Dashboard' },
-    { label: 'Instructors', path: '/fo' },
+    { label: 'Courses', path: '/courses' },
     { label: 'Learn', path: '/learn' },
     { label: 'Brokers', path: '/brokers' },
   ];
@@ -79,7 +79,11 @@ export function Header() {
                 id="user-avatar-btn"
               >
                 <span className="header__avatar-letter">
-                  {user.name.charAt(0).toUpperCase()}
+                  {user.image ? (
+                    <img src={user.image} alt={user.name} className="header__avatar-img" />
+                  ) : (
+                    user.name.charAt(0).toUpperCase()
+                  )}
                 </span>
                 <span className="header__avatar-name">{user.name}</span>
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className={`header__chevron ${dropdownOpen ? 'header__chevron--open' : ''}`}>
@@ -98,6 +102,14 @@ export function Header() {
                   <Link to="/My-Dashboard" className="header__dropdown-item" onClick={() => setDropdownOpen(false)}>
                     Dashboard
                   </Link>
+                  <Link to="/profile" className="header__dropdown-item" onClick={() => setDropdownOpen(false)}>
+                    Profile Settings
+                  </Link>
+                  {user.type === 'Instructor' && (
+                    <Link to="/instructor/upload" className="header__dropdown-item" onClick={() => setDropdownOpen(false)}>
+                      Upload Course
+                    </Link>
+                  )}
                   <button
                     className="header__dropdown-item header__dropdown-item--logout"
                     onClick={() => { logout(); setDropdownOpen(false); }}

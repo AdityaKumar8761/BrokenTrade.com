@@ -115,6 +115,17 @@ router.get('/instructor/:instructorId/stats', async (req, res) => {
     }
 });
 
+// ─── TOTAL COURSE COUNT ─────────────────────────────────────────
+router.get('/count', async (req, res) => {
+    try {
+        const count = await Course.countDocuments();
+        res.status(200).json({ count });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
 // ─── GET COURSES BY INSTRUCTOR ────────────────────────────────
 router.get('/instructor/:instructorId', async (req, res) => {
     try {

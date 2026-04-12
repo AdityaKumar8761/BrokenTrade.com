@@ -6,20 +6,29 @@ import { Link } from "react-router-dom";
 export function Hero() {
   const heroRef = useRef(null);
   const [userCount, setUserCount] = useState("10K+");
+  const [courseCount, setCourseCount] = useState("50+");
 
   useEffect(() => {
-    const fetchCount = async () => {
+    const fetchCounts = async () => {
       try {
-        const res = await fetch('http://localhost:5000/User/count');
-        if (res.ok) {
-          const data = await res.json();
-          setUserCount(data.count.toLocaleString());
+        // Fetch User Count
+        const userRes = await fetch('http://localhost:5000/User/count');
+        if (userRes.ok) {
+          const userData = await userRes.json();
+          setUserCount(userData.count.toLocaleString());
+        }
+
+        // Fetch Course Count
+        const courseRes = await fetch('http://localhost:5000/Courses/count');
+        if (courseRes.ok) {
+          const courseData = await courseRes.json();
+          setCourseCount(courseData.count);
         }
       } catch (err) {
-        console.error("Failed to fetch user count", err);
+        console.error("Failed to fetch counts", err);
       }
     };
-    fetchCount();
+    fetchCounts();
   }, []);
 
   useEffect(() => {
@@ -85,7 +94,7 @@ export function Hero() {
           </div>
           <div className="hero__trust-divider" />
           <div className="hero__trust-item">
-            <span className="hero__trust-number">50+</span>
+            <span className="hero__trust-number">{courseCount}</span>
             <span className="hero__trust-label">Expert Courses</span>
           </div>
         </div>

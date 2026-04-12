@@ -42,6 +42,10 @@ app.use('/uploads', express.static('uploads'));
 const uploadRouters = require('./src/routes/uploadRoutes');
 app.use('/upload', uploadRouters);
 
+// Importing chat routes
+const chatRouters = require('./src/routes/chatRoutes');
+app.use('/api/chat', chatRouters);
+
 app.listen(5000, () => {
   console.log("Server started on port 5000");
 });

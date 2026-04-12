@@ -11,7 +11,8 @@ export function ProfilePage() {
     name: '',
     image: '',
     gig: '',
-    description: ''
+    description: '',
+    title: ''
   });
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState({ type: '', text: '' });
@@ -22,7 +23,8 @@ export function ProfilePage() {
         name: user.name || '',
         image: user.image || '',
         gig: user.gig || '',
-        description: user.description || ''
+        description: user.description || '',
+        title: user.title || ''
       });
     }
   }, [user]);
@@ -110,6 +112,19 @@ export function ProfilePage() {
             {isProfessional && (
               <div className="form-section professional-section">
                 <h3>Professional Identity</h3>
+                
+                <div className="form-group">
+                  <label htmlFor="title">Professional Headline / Title</label>
+                  <input
+                    type="text"
+                    id="title"
+                    name="title"
+                    value={formData.title}
+                    onChange={handleChange}
+                    placeholder="e.g. Senior Forex Analyst & Mentor"
+                  />
+                </div>
+
                   <ImageUpload
                     label="Gigs / Banner Image"
                     initialImage={formData.gig}

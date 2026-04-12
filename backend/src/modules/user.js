@@ -64,6 +64,10 @@ const UserSchema = new mongoose.Schema({
         type: String,
         default: "",
     },
+    title: {
+        type: String,
+        default: "",
+    },
 });
 
 //Create User model

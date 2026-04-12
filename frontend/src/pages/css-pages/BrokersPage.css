@@ -1,0 +1,345 @@
+.brokers-page-wrapper {
+  min-height: 100vh;
+  background-color: #f8fafc;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background Decorative Blooms */
+.brokers-page-wrapper::before,
+.brokers-page-wrapper::after {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  filter: blur(120px);
+  z-index: 0;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.brokers-page-wrapper::before {
+  top: -100px;
+  right: -100px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, rgba(59, 130, 246, 0) 70%);
+}
+
+.brokers-page-wrapper::after {
+  bottom: -200px;
+  left: -100px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, rgba(139, 92, 246, 0) 70%);
+}
+
+.brokers-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 140px 24px 100px;
+  position: relative;
+  z-index: 1;
+}
+
+.brokers-header {
+  text-align: center;
+  margin-bottom: 80px;
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+  animation: fadeInDown 0.8s ease-out;
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.brokers-header h1 {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 20px;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+}
+
+.brokers-header p {
+  font-size: 1.25rem;
+  color: #475569;
+  line-height: 1.6;
+}
+
+.brokers-loading,
+.brokers-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 0;
+  color: #64748b;
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid rgba(59, 130, 246, 0.1);
+  border-top-color: #3b82f6;
+  border-radius: 50%;
+  animation: spin 0.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  margin-bottom: 24px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.brokers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 32px;
+}
+
+.broker-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 28px;
+  padding: 40px 32px;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.05);
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Staggered animation for cards */
+.broker-card:nth-child(1) { animation-delay: 0.1s; }
+.broker-card:nth-child(2) { animation-delay: 0.2s; }
+.broker-card:nth-child(3) { animation-delay: 0.3s; }
+.broker-card:nth-child(4) { animation-delay: 0.4s; }
+.broker-card:nth-child(5) { animation-delay: 0.5s; }
+.broker-card:nth-child(6) { animation-delay: 0.6s; }
+
+.broker-card:hover {
+  transform: translateY(-12px) scale(1.02);
+  border-color: rgba(59, 130, 246, 0.4);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 30px 60px -15px rgba(59, 130, 246, 0.15);
+}
+
+.broker-card__avatar-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 28px;
+  position: relative;
+}
+
+.broker-card__avatar-wrapper {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  padding: 4px;
+  background: linear-gradient(135deg, #3b82f633, #8b5cf633);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.broker-card__avatar-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.75rem;
+  font-weight: 700;
+  color: white;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
+}
+
+.broker-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.broker-card__online-badge {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 18px;
+  height: 18px;
+  background: #10b981;
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.broker-card__name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 10px;
+}
+
+.broker-card__type-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: #f1f5f9;
+  color: #475569;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.broker-card__type-badge::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background: #3b82f6;
+  border-radius: 50%;
+}
+
+.broker-card__rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 20px;
+}
+
+.star-icon {
+  color: #fbbf24;
+  fill: #fbbf24;
+}
+
+.rating-value {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-left: 4px;
+}
+
+.broker-card__desc {
+  font-size: 0.95rem;
+  color: #64748b;
+  line-height: 1.6;
+  margin: 0 0 32px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: 4.8em;
+  padding: 0 10px;
+}
+
+.broker-card__footer {
+  margin-top: auto;
+  display: flex;
+  gap: 12px;
+}
+
+.broker-card__btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 20px;
+  background: #0f172a;
+  color: white;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 16px;
+  text-decoration: none;
+  transition: all 0.2s;
+  border: none;
+  cursor: pointer;
+}
+
+.broker-card__btn:hover {
+  background: #3b82f6;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+}
+
+.broker-card__secondary-btn {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f1f5f9;
+  color: #475569;
+  border-radius: 16px;
+  transition: all 0.2s;
+  border: none;
+  cursor: pointer;
+}
+
+.broker-card__secondary-btn:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .brokers-page-wrapper {
+    background-color: #0f172a;
+  }
+  .brokers-header h1 {
+    color: #f8fafc;
+  }
+  .brokers-header p {
+    color: #94a3b8;
+  }
+  .broker-card {
+    background: rgba(30, 41, 59, 0.7);
+    border-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.3);
+  }
+  .broker-card:hover {
+    background: rgba(30, 41, 59, 0.9);
+    border-color: rgba(59, 130, 246, 0.3);
+  }
+  .broker-card__name {
+    color: #f8fafc;
+  }
+  .broker-card__type-badge {
+    background: rgba(255, 255, 255, 0.05);
+    color: #94a3b8;
+  }
+  .rating-value {
+    color: #f1f5f9;
+  }
+  .broker-card__desc {
+    color: #94a3b8;
+  }
+  .broker-card__btn {
+    background: #3b82f6;
+  }
+  .broker-card__btn:hover {
+    background: #2563eb;
+  }
+  .broker-card__secondary-btn {
+    background: rgba(255, 255, 255, 0.05);
+    color: #94a3b8;
+  }
+}

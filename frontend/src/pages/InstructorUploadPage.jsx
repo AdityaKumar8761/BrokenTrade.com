@@ -6,7 +6,7 @@ import { HomePageFutter } from '../components/HomePageFutter';
 import { ImageUpload } from '../components/ImageUpload';
 import './css-pages/InstructorUploadPage.css';
 
-const API = 'http://localhost:5000/Courses';
+const API = `${import.meta.env.VITE_API_URL}/Courses`;
 
 export function InstructorUploadPage() {
   const { courseId } = useParams();

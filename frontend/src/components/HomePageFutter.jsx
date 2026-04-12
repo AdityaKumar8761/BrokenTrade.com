@@ -91,15 +91,7 @@ export function HomePageFutter() {
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="footer__bottom">
-          <span>© 2026 BrokenTrade. All rights reserved.</span>
-          <div className="footer__bottom-links">
-            <a href="#">Privacy</a>
-            <a href="#">Terms</a>
-            <a href="#">Cookies</a>
-          </div>
-        </div>
+
       </div>
     </footer>
   );

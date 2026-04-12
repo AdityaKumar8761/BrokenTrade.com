@@ -105,4 +105,16 @@ router.get('/inbox/:userId', async (req, res) => {
     }
 });
 
+// ─── GET UNIQUE CLIENT COUNT FOR BROKER ───────────────────
+router.get('/count/:brokerId', async (req, res) => {
+    try {
+        const { brokerId } = req.params;
+        const count = await Chat.countDocuments({ brokerId });
+        res.status(200).json({ count });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
 module.exports = router;

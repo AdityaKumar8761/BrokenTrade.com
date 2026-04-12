@@ -39,7 +39,7 @@ export function ProfilePage() {
     setMessage({ type: '', text: '' });
 
     try {
-      const res = await fetch(`http://localhost:5000/User/${user.id}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/User/${user.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'

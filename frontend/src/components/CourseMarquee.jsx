@@ -9,7 +9,7 @@ export function CourseMarquee() {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const res = await fetch('http://localhost:5000/Courses');
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/Courses`);
         if (res.ok) {
           const data = await res.json();
           // Duplicate the courses to ensure seamless scrolling

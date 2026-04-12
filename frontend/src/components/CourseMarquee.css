@@ -152,6 +152,7 @@
   line-height: 1.4;
   height: 2.8em;
   overflow: hidden;
+  line-clamp: 2; /* Standard property */
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;

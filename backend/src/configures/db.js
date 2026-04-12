@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 // MongoDB connection URL
-const mongoURL = 'mongodb://localhost:27017/Broke_Treade';
+const mongoURL = process.env.MONGODB_URI || 'mongodb://localhost:27017/Broke_Treade';
 
 // Connect to MongoDB
 mongoose.connect(mongoURL);

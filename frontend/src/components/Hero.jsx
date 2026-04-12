@@ -12,14 +12,14 @@ export function Hero() {
     const fetchCounts = async () => {
       try {
         // Fetch User Count
-        const userRes = await fetch('http://localhost:5000/User/count');
+        const userRes = await fetch(`${import.meta.env.VITE_API_URL}/User/count`);
         if (userRes.ok) {
           const userData = await userRes.json();
           setUserCount(userData.count.toLocaleString());
         }
 
         // Fetch Course Count
-        const courseRes = await fetch('http://localhost:5000/Courses/count');
+        const courseRes = await fetch(`${import.meta.env.VITE_API_URL}/Courses/count`);
         if (courseRes.ok) {
           const courseData = await courseRes.json();
           setCourseCount(courseData.count);

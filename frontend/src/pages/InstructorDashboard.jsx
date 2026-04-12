@@ -6,7 +6,7 @@ import { Header } from '../components/Header';
 import { useAuth } from '../context/AuthContext';
 import { courseCategoryClass } from '../utils/courseCategoryClass';
 
-const API = 'http://localhost:5000/Courses';
+const API = `${import.meta.env.VITE_API_URL}/Courses`;
 
 function formatInt(n) {
   return typeof n === 'number' ? n.toLocaleString() : '0';

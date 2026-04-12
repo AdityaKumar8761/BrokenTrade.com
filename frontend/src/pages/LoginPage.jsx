@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import './css-pages/login.css';
 
-const API_URL = 'http://localhost:5000/User';
+const API_URL = `${import.meta.env.VITE_API_URL}/User`;
 
 export function LoginPage() {
   const [isSignup, setIsSignup] = useState(false);

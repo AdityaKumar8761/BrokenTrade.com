@@ -31,9 +31,9 @@ export function ChatPage() {
       try {
         let res;
         if (existingChatId) {
-          res = await fetch(`http://localhost:5000/api/chat/${existingChatId}`);
+          res = await fetch(`${import.meta.env.VITE_API_URL}/api/chat/${existingChatId}`);
         } else if (brokerId) {
-          res = await fetch(`http://localhost:5000/api/chat/initiate`, {
+          res = await fetch(`${import.meta.env.VITE_API_URL}/api/chat/initiate`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ learnerId: user.id, brokerId })
@@ -64,7 +64,7 @@ export function ChatPage() {
     
     const interval = setInterval(async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/chat/${chat._id}`);
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/chat/${chat._id}`);
         if (res.ok) {
           const data = await res.json();
           if (data.messages.length !== chat.messages.length) {
@@ -87,7 +87,7 @@ export function ChatPage() {
 
     setSending(true);
     try {
-      const res = await fetch(`http://localhost:5000/api/chat/${chat._id}/send`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/chat/${chat._id}/send`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ senderId: user.id, text })

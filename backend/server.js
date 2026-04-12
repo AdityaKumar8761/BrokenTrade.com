@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
@@ -14,7 +15,7 @@ runSampleCourseSeed();
 
 // Middleware
 app.use(cors({
-  origin: 'http://localhost:5173',  // Vite dev server
+  origin: process.env.FRONTEND_URL || 'http://localhost:5173',  // Use env or default
   credentials: true,
 }));
 app.use(express.json());
@@ -46,6 +47,7 @@ app.use('/upload', uploadRouters);
 const chatRouters = require('./src/routes/chatRoutes');
 app.use('/api/chat', chatRouters);
 
-app.listen(5000, () => {
-  console.log("Server started on port 5000");
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server started on port ${PORT}`);
 });

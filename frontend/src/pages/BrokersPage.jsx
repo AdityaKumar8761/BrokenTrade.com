@@ -4,7 +4,7 @@ import { Header } from '../components/Header';
 import { HomePageFutter } from '../components/HomePageFutter';
 import './css-pages/BrokersPage.css';
 
-const API_URL = 'http://localhost:5000/User/all';
+const API_URL = `${import.meta.env.VITE_API_URL}/User/all`;
 
 // Component for Star Rating
 const RatingStars = ({ rating }) => {

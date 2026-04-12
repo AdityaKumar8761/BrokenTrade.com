@@ -32,7 +32,7 @@ export function AdminDashboard() {
   const fetchUsers = async () => {
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:5000/User/all');
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/User/all`);
       if (!response.ok) throw new Error('Failed to fetch user data');
       const data = await response.json();
       setUsers(data);
@@ -50,7 +50,7 @@ export function AdminDashboard() {
   const handleDelete = async (id) => {
     if (!window.confirm('Are you sure you want to delete this user?')) return;
     try {
-      const res = await fetch(`http://localhost:5000/User/${id}`, { method: 'DELETE' });
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/User/${id}`, { method: 'DELETE' });
       if (res.ok) {
         setUsers(users.filter((u) => u._id !== id));
       } else {
@@ -96,7 +96,7 @@ export function AdminDashboard() {
     e.preventDefault();
     try {
       if (modalMode === 'add') {
-        const res = await fetch('http://localhost:5000/User/register', {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/User/register`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(formData),
@@ -112,7 +112,7 @@ export function AdminDashboard() {
         const updates = { ...formData };
         if (!updates.password) delete updates.password;
 
-        const res = await fetch(`http://localhost:5000/User/${formData._id}`, {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/User/${formData._id}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(updates),

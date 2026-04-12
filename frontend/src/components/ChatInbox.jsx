@@ -10,7 +10,7 @@ export function ChatInbox({ userId }) {
     const fetchInbox = async () => {
       if (!userId) return;
       try {
-        const res = await fetch(`http://localhost:5000/api/chat/inbox/${userId}`);
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/chat/inbox/${userId}`);
         if (res.ok) {
           const data = await res.json();
           setChats(data);

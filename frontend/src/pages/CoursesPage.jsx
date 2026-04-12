@@ -7,7 +7,7 @@ import { extractYoutubeId } from '../utils/youtube';
 import { courseCategoryClass } from '../utils/courseCategoryClass';
 import './css-pages/CoursesPage.css';
 
-const API = 'http://localhost:5000/Courses';
+const API = `${import.meta.env.VITE_API_URL}/Courses`;
 
 function thumbForCourse(course) {
   const yt = extractYoutubeId(course.videoUrl);

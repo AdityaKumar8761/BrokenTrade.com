@@ -24,7 +24,7 @@ export function DocumentationPage() {
 
   // Fetch structure
   useEffect(() => {
-    fetch('http://localhost:5000/docs/structure')
+    fetch(`${import.meta.env.VITE_API_URL}/docs/structure`)
       .then(res => res.json())
       .then(data => setStructure(data))
       .catch(err => {
@@ -70,7 +70,7 @@ export function DocumentationPage() {
     if (!activeDoc) return;
 
     setLoadingContent(true);
-    fetch(`http://localhost:5000/docs/content/${activeDoc.category}/${activeDoc.file}`)
+    fetch(`${import.meta.env.VITE_API_URL}/docs/content/${activeDoc.category}/${activeDoc.file}`)
       .then(res => {
         if (!res.ok) throw new Error('Failed to load document');
         return res.json();

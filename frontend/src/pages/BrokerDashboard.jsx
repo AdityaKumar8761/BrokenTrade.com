@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/dashboard-shell.css';
 import './css-pages/BrokerDashboard.css';
@@ -7,59 +8,90 @@ import { ChatInbox } from '../components/ChatInbox';
 
 export function BrokerDashboard() {
   const { user } = useAuth();
+  const [clientCount, setClientCount] = useState(0);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchMetrics = async () => {
+      if (!user?.id) return;
+      try {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/chat/count/${user.id}`, {
+          method: 'GET',
+          headers: { 'Content-Type': 'application/json' }
+        });
+        if (res.ok) {
+          const data = await res.json();
+          setClientCount(data.count);
+        }
+      } catch (err) {
+        console.error('Failed to fetch broker metrics', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchMetrics();
+  }, [user]);
 
   return (
-    <>
+    <div className="broker-dash-wrapper">
       <Header />
-      <div className="dash-page">
-        <div className="dash-inner broker-dash-layout">
-          <div className="dash-main-content">
-            <header className="dash-hero">
-              <div className="dash-hero__top">
-                <div>
-                  <p className="dash-eyebrow">Broker</p>
-                  <h1 className="dash-title">Partner desk</h1>
-                  <p className="dash-lede">
-                    <strong>{user?.name}</strong>, this area will host client onboarding, lead quality, and payout
-                    summaries. Until those tools ship, use the links below to stay aligned with the product surface.
-                  </p>
-                </div>
-              </div>
-              <nav className="dash-quick" aria-label="Shortcuts">
-                <Link className="dash-quick__link" to="/courses">
-                  <span className="dash-quick__icon" aria-hidden="true">
-                    ◆
-                  </span>
-                  <span>Course catalog</span>
-                </Link>
-                <Link className="dash-quick__link" to="/profile">
-                  <span className="dash-quick__icon" aria-hidden="true">
-                    ○
-                  </span>
-                  <span>Profile</span>
-                </Link>
-              </nav>
-            </header>
+      <div className="broker-dash-layout">
+        <main className="dash-main-content">
+          {/* Hero Section */}
+          <header className="dash-hero">
+            <p className="dash-eyebrow">Professional Account</p>
+            <h1 className="dash-title">Broker Command Center</h1>
+            <p className="dash-lede">
+              Good day, <strong>{user?.name}</strong>. Monitor your client engagement 
+              and partnership performance metrics from this centralized command center.
+            </p>
+          </header>
 
-            <section className="dash-panel broker-dash__panel">
-              <div className="dash-spotlight broker-dash__spotlight">
-                <div className="dash-spotlight__mark" aria-hidden="true">
-                  B
-                </div>
-                <h2>Broker portal</h2>
-                <p>
-                  Client management, ticket volume, and revenue views will appear here when the broker programme is
-                  switched on. Nothing is wrong with your account—this is simply ahead of the release.
-                </p>
-              </div>
-            </section>
-          </div>
+          {/* Seamless Stats Bar */}
+          <section className="dash-stats-bar">
+            <div className="stat-item">
+              <span className="stat-item__label">Total Clients</span>
+              <div className="stat-item__value">{loading ? '...' : clientCount}</div>
+              <div className="stat-item__trend trend--up">↑ active</div>
+            </div>
 
-          <aside className="dash-sidebar">
-            <ChatInbox userId={user?.id} />
-          </aside>
-        </div>
+            <div className="stat-item">
+              <span className="stat-item__label">Avg Rating</span>
+              <div className="stat-item__value">{user?.rating || '0.0'}</div>
+              <div className="stat-item__trend" style={{color: '#64748b'}}>Verified</div>
+            </div>
+
+            <div className="stat-item">
+              <span className="stat-item__label">Active Threads</span>
+              <div className="stat-item__value">{loading ? '...' : clientCount}</div>
+              <div className="stat-item__trend" style={{color: '#64748b'}}>Responding</div>
+            </div>
+          </section>
+
+          {/* Service Panel */}
+          <section className="dash-panel">
+            <div className="dash-panel__header">
+              <h2>Service Management</h2>
+            </div>
+            <div className="dash-panel__content">
+              <p>
+                Configure your professional profile, manage service headlines, and update your banner 
+                portfolio to attract more clients. Your visibility is currently set to <strong>Active</strong>.
+              </p>
+              
+              <div className="shortcut-buttons">
+                <Link className="shortcut-btn" to="/profile">
+                  <span>Manage Profile</span>
+                </Link>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <aside className="dash-sidebar">
+          <ChatInbox userId={user?.id} />
+        </aside>
       </div>
-    </>
+    </div>
   );
 }

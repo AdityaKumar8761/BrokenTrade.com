@@ -245,6 +245,7 @@
   margin: 0 0 32px;
   display: -webkit-box;
   -webkit-line-clamp: 3;
+  line-clamp: 3; /* Standard property */
   -webkit-box-orient: vertical;
   overflow: hidden;
   height: 4.8em;

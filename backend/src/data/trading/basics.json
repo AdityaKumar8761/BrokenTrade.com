@@ -1,9 +1,144 @@
 {
-  "title": "Trading Basics",
+  "title": "Trading",
   "content": [
-    { "type": "heading", "text": "Stock Trading 101" },
-    { "type": "paragraph", "text": "Trading involves short-term buying and selling of financial assets like stocks, commodities, or currencies." },
-    { "type": "heading", "text": "Bulls vs Bears" },
-    { "type": "paragraph", "text": "Bull markets are characterized by rising prices, whereas Bear markets are characterized by falling prices." }
+    {
+      "type": "heading",
+      "text": "What is Trading?"
+    },
+    {
+      "type": "paragraph",
+      "text": "Trading is the act of buying an asset with the intention of selling it later at a higher price. Unlike investing, which focuses on long-term growth, trading focuses on short-term price movements."
+    },
+    {
+      "type": "paragraph",
+      "text": "For example, if you buy a stock at ₹100 and sell it at ₹110, you make a profit of ₹10."
+    },
+
+    {
+      "type": "heading",
+      "text": "How Markets Move"
+    },
+    {
+      "type": "paragraph",
+      "text": "Markets move based on supply and demand. When more people want to buy an asset, its price goes up."
+    },
+    {
+      "type": "paragraph",
+      "text": "When more people want to sell, the price goes down."
+    },
+    {
+      "type": "paragraph",
+      "text": "You can think of it like an auction—if multiple buyers compete, the price increases."
+    },
+
+    {
+      "type": "heading",
+      "text": "Reading Charts"
+    },
+    {
+      "type": "paragraph",
+      "text": "Charts are visual representations of price movement over time. They help traders understand trends and make decisions."
+    },
+    {
+      "type": "paragraph",
+      "text": "The vertical axis shows price, and the horizontal axis shows time."
+    },
+    {
+      "type": "paragraph",
+      "text": "Candlesticks are commonly used. A green candle means price went up, while a red candle means price went down."
+    },
+    {
+      "type": "paragraph",
+      "text": "Each candle shows four important values: open, close, high, and low."
+    },
+
+    {
+      "type": "heading",
+      "text": "Basic Trading Process"
+    },
+    {
+      "type": "paragraph",
+      "text": "A trader follows a structured process to stay disciplined."
+    },
+    {
+      "type": "paragraph",
+      "text": "1. Identify: Understand what the market is doing."
+    },
+    {
+      "type": "paragraph",
+      "text": "2. Predict: Estimate where the price might go next."
+    },
+    {
+      "type": "paragraph",
+      "text": "3. Decide: Choose when to enter the trade."
+    },
+    {
+      "type": "paragraph",
+      "text": "4. Execute: Place the trade with a defined risk and target."
+    },
+
+    {
+      "type": "heading",
+      "text": "Risk Management"
+    },
+    {
+      "type": "paragraph",
+      "text": "Successful trading is not about being right every time, but about managing risk."
+    },
+    {
+      "type": "paragraph",
+      "text": "A common concept is risk-to-reward ratio. For example, risking ₹100 to earn ₹300 gives a 1:3 ratio."
+    },
+    {
+      "type": "paragraph",
+      "text": "Even with a low win rate, traders can be profitable if their rewards are larger than their losses."
+    },
+
+    {
+      "type": "heading",
+      "text": "Why Most Traders Fail"
+    },
+    {
+      "type": "paragraph",
+      "text": "Many beginners fail because they trade emotionally instead of following a plan."
+    },
+    {
+      "type": "paragraph",
+      "text": "Common mistakes include overtrading, using too much leverage, and ignoring stop losses."
+    },
+    {
+      "type": "paragraph",
+      "text": "Trying to get rich quickly without a proper strategy often leads to losses."
+    },
+
+    {
+      "type": "heading",
+      "text": "Simple Trade Example"
+    },
+    {
+      "type": "paragraph",
+      "text": "Suppose you buy a stock at ₹100 and set a stop loss at ₹95 and a target at ₹115."
+    },
+    {
+      "type": "paragraph",
+      "text": "If the price hits ₹115, you make a profit. If it falls to ₹95, your loss is limited."
+    },
+    {
+      "type": "paragraph",
+      "text": "This approach helps control risk while aiming for higher returns."
+    },
+
+    {
+      "type": "heading",
+      "text": "Key Mindset"
+    },
+    {
+      "type": "paragraph",
+      "text": "Trading should be treated like a business, not gambling."
+    },
+    {
+      "type": "paragraph",
+      "text": "A good trader focuses on discipline, consistency, and long-term growth rather than quick profits."
+    }
   ]
 }

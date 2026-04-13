@@ -1,0 +1,140 @@
+{
+  "title": "Stock Market",
+  "content": [
+    {
+      "type": "heading",
+      "text": "What is Stock Market?"
+    },
+    {
+      "type": "paragraph",
+      "text": "The stock market is a place where people buy and sell shares of companies. When you buy a share, you are buying a small ownership in that company."
+    },
+    {
+      "type": "paragraph",
+      "text": "It helps companies raise money and allows investors to grow their wealth over time."
+    },
+
+    {
+      "type": "heading",
+      "text": "How it Started"
+    },
+    {
+      "type": "paragraph",
+      "text": "The stock market began in the 1600s with the Dutch East India Company. It needed money for global trade operations like transporting spices, silk, and gold."
+    },
+    {
+      "type": "paragraph",
+      "text": "Instead of taking loans, the company offered shares to the public. Investors received a portion of profits in return."
+    },
+    {
+      "type": "paragraph",
+      "text": "People started buying and selling these shares in public places like coffee houses, which led to the creation of the first stock market."
+    },
+
+    {
+      "type": "heading",
+      "text": "How Companies Raise Money (IPO)"
+    },
+    {
+      "type": "paragraph",
+      "text": "When a company wants to grow, it needs money. It can raise this money by selling shares to the public through an Initial Public Offering (IPO)."
+    },
+    {
+      "type": "paragraph",
+      "text": "After the IPO, anyone can buy shares and become a partial owner of the company."
+    },
+    {
+      "type": "paragraph",
+      "text": "The money collected is used by the company to expand its business and create new opportunities."
+    },
+
+    {
+      "type": "heading",
+      "text": "How Stock Prices Work"
+    },
+    {
+      "type": "paragraph",
+      "text": "Stock prices are mainly driven by demand and supply. When more people want to buy a stock, its price goes up."
+    },
+    {
+      "type": "paragraph",
+      "text": "When more people want to sell, the price goes down."
+    },
+    {
+      "type": "paragraph",
+      "text": "Company performance, news, and investor expectations all influence this demand and supply."
+    },
+
+    {
+      "type": "heading",
+      "text": "Key Components"
+    },
+    {
+      "type": "paragraph",
+      "text": "Stock/Share: A unit of ownership in a company."
+    },
+    {
+      "type": "paragraph",
+      "text": "Stock Exchange: A platform like NSE or BSE where buying and selling happens."
+    },
+    {
+      "type": "paragraph",
+      "text": "Broker: An app or service like Zerodha or Groww that allows you to trade."
+    },
+    {
+      "type": "paragraph",
+      "text": "Index: A group of top companies representing the market, such as Nifty 50 or Sensex."
+    },
+
+    {
+      "type": "heading",
+      "text": "Why People Invest"
+    },
+    {
+      "type": "paragraph",
+      "text": "People invest in the stock market to grow their wealth over time."
+    },
+    {
+      "type": "paragraph",
+      "text": "Historically, the stock market has provided better returns than traditional savings and helps beat inflation."
+    },
+    {
+      "type": "paragraph",
+      "text": "It also allows individuals to participate in the growth of companies and the economy."
+    },
+
+    {
+      "type": "heading",
+      "text": "Risks & Reality"
+    },
+    {
+      "type": "paragraph",
+      "text": "The stock market is not risk-free. Prices can go up or down quickly, leading to profits or losses."
+    },
+    {
+      "type": "paragraph",
+      "text": "Factors like economic changes, company performance, and investor emotions affect stock prices."
+    },
+    {
+      "type": "paragraph",
+      "text": "Successful investing requires patience, discipline, and a long-term mindset."
+    },
+
+    {
+      "type": "heading",
+      "text": "Simple Example"
+    },
+    {
+      "type": "paragraph",
+      "text": "Imagine a company sells shares at ₹100 each. You buy 10 shares, investing ₹1000."
+    },
+    {
+      "type": "paragraph",
+      "text": "If the company grows and the price rises to ₹150, your investment becomes ₹1500."
+    },
+    {
+      "type": "paragraph",
+      "text": "If you sell at that point, you make a profit of ₹500 (excluding fees)."
+    }
+  ]
+}

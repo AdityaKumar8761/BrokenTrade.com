@@ -1,0 +1,9 @@
+{
+  "title": "All about Mutual funds",
+  "content": [
+    { "type": "heading", "text": "Understanding Bonds" },
+    { "type": "paragraph", "text": "A bond is a fixed income instrument that represents a loan made by an investor to a borrower (typically corporate or governmental)." },
+    { "type": "heading", "text": "Risk and Reward" },
+    { "type": "paragraph", "text": "Bonds are generally considered safer than stocks but offer lower average returns." }
+  ]
+}

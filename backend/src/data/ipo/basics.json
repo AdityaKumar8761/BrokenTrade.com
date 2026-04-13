@@ -1,9 +1,56 @@
 {
-  "title": "Upcoming IPOs",
+  "title": "Basics",
   "content": [
-    { "type": "heading", "text": "What is an IPO?" },
-    { "type": "paragraph", "text": "An Initial Public Offering (IPO) is the process by which a private company can go public by sale of its stocks to general public." },
-    { "type": "heading", "text": "How to Invest" },
-    { "type": "paragraph", "text": "Before investing, analyze the red herring prospectus (RHP) which details the company's financials and objectives." }
+    {
+      "type": "heading",
+      "text": "What is Basics?"
+    },
+    {
+      "type": "paragraph",
+      "text": "Basics is an important concept in trading and financial markets. Understanding it helps traders make better decisions."
+    },
+    {
+      "type": "paragraph",
+      "text": "It plays a key role in analyzing market behavior and identifying opportunities."
+    },
+
+    {
+      "type": "heading",
+      "text": "Why Basics Matters"
+    },
+    {
+      "type": "paragraph",
+      "text": "Basics helps traders improve their strategy and manage risk effectively."
+    },
+    {
+      "type": "paragraph",
+      "text": "Without understanding Basics, it becomes difficult to trade consistently."
+    },
+
+    {
+      "type": "heading",
+      "text": "Example of Basics"
+    },
+    {
+      "type": "paragraph",
+      "text": "A simple example of Basics can be observed in real market scenarios where traders use it to make informed decisions."
+    },
+
+    {
+      "type": "heading",
+      "text": "Key Points"
+    },
+    {
+      "type": "paragraph",
+      "text": "1. Learn the basics of Basics."
+    },
+    {
+      "type": "paragraph",
+      "text": "2. Apply it in real trading scenarios."
+    },
+    {
+      "type": "paragraph",
+      "text": "3. Combine it with other concepts for better results."
+    }
   ]
 }

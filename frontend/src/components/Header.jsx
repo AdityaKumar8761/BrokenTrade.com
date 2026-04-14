@@ -32,6 +32,7 @@ export function Header() {
     { label: 'Courses', path: '/courses' },
     { label: 'Learn', path: '/learn' },
     { label: 'Brokers', path: '/brokers' },
+    { label: 'Tools', path: '/tools' },
   ];
 
   return (

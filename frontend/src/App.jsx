@@ -10,6 +10,7 @@ import { BrokersPage } from './pages/BrokersPage'
 import { BrokerDetailPage } from './pages/BrokerDetailPage'
 import { InstructorUploadPage } from './pages/InstructorUploadPage'
 import { InstructorCoursePage } from './pages/InstructorCoursePage'
+import { ToolsPage } from './pages/ToolsPage'
 import './App.css'
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
       <Route path="/profile" element={ <ProfilePage /> } />
       <Route path="/instructor/upload" element={ <InstructorUploadPage /> } />
       <Route path="/instructor/course/:courseId/edit" element={ <InstructorUploadPage /> } />
+      <Route path="/tools" element={ <ToolsPage /> } />
     </Routes>
   )
 }

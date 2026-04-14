@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const path = require("path");
 const app = express();
 const db = require('./src/configures/db'); // initialize DB connection
 const seedSampleCourse = require('./src/seedSampleCourse');
@@ -20,9 +21,6 @@ app.use(cors({
 }));
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.send("Server is running 🚀");
-});
 
 // Importing the router file (user routes)
 const userRouters = require('./src/routes/userRoutes');
@@ -46,6 +44,24 @@ app.use('/upload', uploadRouters);
 // Importing chat routes
 const chatRouters = require('./src/routes/chatRoutes');
 app.use('/api/chat', chatRouters);
+
+// ✅ SERVE FRONTEND (THIS IS THE FIX)
+// Updated path to point to the 'dist' folder inside the backend directory
+const frontendDistPath = path.join(__dirname, "dist");
+
+app.use(express.static(frontendDistPath));
+
+app.get("*path", (req, res) => {
+  if (
+    !req.path.startsWith("/api") &&
+    !req.path.startsWith("/User") &&
+    !req.path.startsWith("/docs") &&
+    !req.path.startsWith("/Courses") &&
+    !req.path.startsWith("/upload")
+  ) {
+    res.sendFile(path.join(frontendDistPath, "index.html"));
+  }
+});
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

@@ -75,7 +75,7 @@ export function HomePageFutter() {
 
         {/* Creators */}
         <div className="footer__creators">
-          <h4 className="footer__creators-title">Built with ❤️ by</h4>
+          <h4 className="footer__creators-title">Built by</h4>
           <div className="footer__creator-list">
             {creators.map((c) => (
               <div key={c.name} className="footer__creator">

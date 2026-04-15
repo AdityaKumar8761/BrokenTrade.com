@@ -101,7 +101,7 @@ export function Header() {
                   </div>
                   <div className="header__dropdown-divider" />
                   <Link to="/My-Dashboard" className="header__dropdown-item" onClick={() => setDropdownOpen(false)}>
-                    Dashboard
+                    Dashboard 
                   </Link>
                   <Link to="/profile" className="header__dropdown-item" onClick={() => setDropdownOpen(false)}>
                     Profile Settings

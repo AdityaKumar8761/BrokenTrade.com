@@ -3,6 +3,10 @@
   Focused on whitespace, typography, and seamless transitions.
 */
 
+.broker-dash-wrapper {
+  min-height: 100vh;
+}
+
 .broker-dash-layout {
   display: grid;
   grid-template-columns: 1fr 400px;

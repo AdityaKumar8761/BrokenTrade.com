@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import '../styles/dashboard-shell.css';
 import './css-pages/BrokerDashboard.css';
 import { Header } from '../components/Header';
+import { HomePageFutter } from '../components/HomePageFutter';
 import { useAuth } from '../context/AuthContext';
 import { ChatInbox } from '../components/ChatInbox';
 
@@ -92,6 +93,7 @@ export function BrokerDashboard() {
           <ChatInbox userId={user?.id} />
         </aside>
       </div>
+      <HomePageFutter />
     </div>
   );
 }

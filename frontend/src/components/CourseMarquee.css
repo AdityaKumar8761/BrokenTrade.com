@@ -67,7 +67,7 @@
   display: flex;
   gap: 30px;
   padding: 20px 0;
-  animation: marquee 40s linear infinite;
+  animation: marquee 25s linear infinite;
   width: max-content;
 }
 

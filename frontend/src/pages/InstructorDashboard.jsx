@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import '../styles/dashboard-shell.css';
 import './css-pages/InstructorDashboard.css';
 import { Header } from '../components/Header';
+import { HomePageFutter } from '../components/HomePageFutter';
 import { useAuth } from '../context/AuthContext';
 import { courseCategoryClass } from '../utils/courseCategoryClass';
 
@@ -149,6 +150,7 @@ export function InstructorDashboard() {
           )}
         </div>
       </div>
+      <HomePageFutter />
     </>
   );
 }

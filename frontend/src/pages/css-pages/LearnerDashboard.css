@@ -1,3 +1,306 @@
-.learner-dash__panel {
-  padding-top: 8px;
+/* 
+  YOUTUBE-STYLE LEARNER DASHBOARD
+  Pure white background, grid thumbnail representation.
+*/
+
+.yt-layout-wrapper {
+  background-color: #f9f9f9;
+  min-height: 100vh;
+  font-family: 'Roboto', 'Inter', sans-serif;
+  padding-top: 80px; /* offset header */
+}
+
+.yt-main-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 24px 32px;
+  min-height: 100vh; /* Pushes the footer off-screen until scrolled */
+}
+
+/* Filters bar (like YouTube categories) */
+.yt-filters-bar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 32px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  align-items: center;
+}
+
+.yt-filters-bar::-webkit-scrollbar {
+  height: 0;
+}
+
+.yt-pill {
+  background: rgba(0, 0, 0, 0.05);
+  color: #0f172a;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.2s, color 0.2s;
+}
+
+.yt-pill:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.yt-pill--active {
+  background: #0f172a;
+  color: #fff;
+}
+
+.yt-pill--active:hover {
+  background: #1e293b;
+}
+
+.yt-pill--coins {
+  margin-left: auto;
+  background: #fef3c7;
+  color: #b45309;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.yt-coins-icon {
+  font-size: 16px;
+}
+
+/* Content Grid */
+.yt-content-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+@media (min-width: 1024px) {
+  .yt-content-grid {
+    grid-template-columns: minmax(0, 3fr) 350px;
+  }
+}
+
+.yt-section-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 24px 0;
+  color: #0f172a;
+}
+
+/* Video Grid (Courses) */
+.yt-video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  row-gap: 40px;
+}
+
+.yt-video-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease;
+}
+
+.yt-video-card:hover {
+  transform: translateY(-2px);
+}
+
+.yt-video-thumbnail {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #e2e8f0;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.yt-video-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.yt-thumbnail-placeholder {
+  color: #94a3b8;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+
+.yt-video-duration {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 3px 6px;
+  border-radius: 4px;
+}
+
+.yt-video-info {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.yt-video-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #cbd5e1;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.yt-video-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overflow: hidden;
+}
+
+.yt-video-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #0f172a;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.4;
+}
+
+.yt-video-channel,
+.yt-video-meta {
+  margin: 0;
+  font-size: 14px;
+  color: #64748b;
+}
+
+/* Sidebar Broker Panel */
+.yt-sidebar {
+  display: flex;
+  flex-direction: column;
+}
+
+.yt-broker-panel {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.04);
+  max-width: 380px; /* Prevent overstretching */
+}
+
+.yt-broker-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.yt-broker-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.yt-broker-avatar-fallback {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #3b82f6;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.yt-broker-name {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.yt-broker-desc {
+  margin: 0;
+  font-size: 14px;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+.yt-broker-action {
+  display: inline-block;
+  background: #2563eb;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  text-align: center;
+  transition: background 0.2s;
+  font-size: 14px;
+}
+
+.yt-broker-action:hover {
+  background: #1d4ed8;
+}
+
+/* Utilities */
+.yt-loading-state {
+  color: #64748b;
+  font-size: 15px;
+}
+
+.yt-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 20px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  text-align: center;
+  gap: 16px;
+}
+
+.yt-empty-state p {
+  margin: 0;
+  color: #475569;
+}
+
+.yt-empty-state--small {
+  padding: 32px 20px;
+}
+
+@media (max-width: 640px) {
+  .yt-main-content {
+    padding: 16px;
+  }
 }

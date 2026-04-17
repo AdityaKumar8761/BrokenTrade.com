@@ -12,8 +12,9 @@ export function CourseMarquee() {
         const res = await fetch(`${import.meta.env.VITE_API_URL}/Courses`);
         if (res.ok) {
           const data = await res.json();
-          // Duplicate the courses to ensure seamless scrolling
-          setCourses([...data, ...data]);
+          // Duplicate the courses multiple times to ensure seamless scrolling
+          const clones = Array(10).fill(data).flat();
+          setCourses(clones);
         }
       } catch (err) {
         console.error('Failed to fetch courses for marquee', err);

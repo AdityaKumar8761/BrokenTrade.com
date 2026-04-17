@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import '../styles/dashboard-shell.css';
 import './css-pages/AdminDashboard.css';
 import { Header } from '../components/Header';
+import { HomePageFutter } from '../components/HomePageFutter';
 import { useAuth } from '../context/AuthContext';
 
 export function AdminDashboard() {
@@ -239,6 +240,7 @@ export function AdminDashboard() {
           )}
         </div>
       </div>
+      <HomePageFutter />
 
       {isModalOpen && (
         <div
